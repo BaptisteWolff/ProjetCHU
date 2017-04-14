@@ -1,0 +1,32 @@
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.FormServeur.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.Properties.Resources.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.exe
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.exe
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.csprojResolveAssemblyReference.cache
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.FormServeur.resources
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.Properties.Resources.resources
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\bin\Release\TestWCFServer.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.FormServeur.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFServer\obj\Release\TestWCFServer.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\bin\Release\TestWCFServer.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\bin\Release\TestWCFServer.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.FormServeur.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\TestWCFServer\obj\Release\TestWCFServer.csproj.GenerateResource.Cache

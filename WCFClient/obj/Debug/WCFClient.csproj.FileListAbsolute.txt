@@ -1,0 +1,20 @@
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\bin\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\bin\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\WCFClient.FormClient.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\TestWCFClient.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\WCFClient.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\WCFClient\obj\Debug\WCFClient.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\WCFClient.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\WCFClient.FormClient.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\TestWCFClient.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\WCFClient.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\bin\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\PicoWCF\WCFClient\bin\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\PicoWCF\WCFClient\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.pdb

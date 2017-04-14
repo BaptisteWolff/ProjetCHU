@@ -1,0 +1,16 @@
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\bin\Debug\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\bin\Debug\TestWCFServer.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.FormServeur.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.Properties.Resources.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\bin\Debug\TestWCFServer.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\bin\Debug\TestWCFServer.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.FormServeur.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.Properties.Resources.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFServer\obj\Debug\TestWCFServer.csproj.GenerateResource.Cache

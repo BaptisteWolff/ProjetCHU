@@ -1,0 +1,37 @@
+case 'B':
+                        CollectBlockImmediate();
+                        break;
+
+                    case 'T':
+                        CollectBlockTriggered();
+                        break;
+
+                    case 'R':
+                        CollectBlockRapid();
+                        break;
+
+                    case 'S':
+                        CollectStreamingImmediate();
+                        break;
+
+                    case 'W':
+                        CollectStreamingTriggered();
+                        break;
+
+                    case 'V':
+                        SetVoltages();
+                        break;
+
+                    case 'I':
+                        SetTimebase();
+                        break;
+
+                    case 'A':
+                        _scaleVoltages = !_scaleVoltages;
+                        break;
+
+                    case 'D':
+                        if (_digitalPorts > 0)
+                        {
+                            DigitalMenu();
+                        }

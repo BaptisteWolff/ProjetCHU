@@ -1,0 +1,8 @@
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\PicoWCF.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\TestWCFClient.FormClient.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\TestWCFClient.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\obj\Debug\PicoWCF.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\bin\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\Pico+testWCF\Pico\bin\Debug\TestWCFClient.pdb

@@ -1,0 +1,13 @@
+BlockDataHandler("First 10 readings", 0, Imports.Mode.ANALOGUE);
+
+3 . 100 mV
+4 . 200 mV
+5 . 500 mV
+6 . 1000 mV
+7 . 2000 mV
+8 . 5000 mV
+9 . 10000 mV
+10 . 20000 mV
+
+Specify voltage range (Range_100MV..Range_20V)
+99 - switches channel off

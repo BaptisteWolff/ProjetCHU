@@ -1,0 +1,10 @@
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\bin\Debug\TestWCFClient.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\bin\Debug\TestWCFClient.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.FormClient.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.Properties.Resources.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\2012\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Debug\TestWCFClient.pdb

@@ -1,0 +1,18 @@
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\bin\Release\TestWCFClient.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\bin\Release\TestWCFClient.pdb
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.FormClient.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.Properties.Resources.resources
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.exe
+C:\Documents and Settings\Administrateur\Mes documents\Visual Studio 2008\Projects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.exe
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\bin\Release\TestWCFClient.exe
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\bin\Release\TestWCFClient.pdb
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.csprojResolveAssemblyReference.cache
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.FormClient.resources
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.Properties.Resources.resources
+C:\Users\Baptiste\Desktop\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Projet ingénierie\ProjInfoCHU\VSprojects\TestWCF\TestWCFClient\obj\Release\TestWCFClient.pdb
