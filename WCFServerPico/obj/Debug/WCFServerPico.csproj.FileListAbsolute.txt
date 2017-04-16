@@ -18,3 +18,9 @@ D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingé
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\PicoWCF\WCFServerPico\obj\Debug\WCFServer.pdb
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.exe
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\bin\Debug\WCFServer.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\bin\Debug\WCFServer.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServerPico.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.FormServeur.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServerPico.csproj.GenerateResource.Cache

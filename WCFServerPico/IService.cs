@@ -12,7 +12,7 @@ namespace WCF
     public interface IService
     {
         [OperationContract]
-        string Ping(string name);
+        bool Ping();
         [OperationContract]
         bool picoCommand(string filename);
     }

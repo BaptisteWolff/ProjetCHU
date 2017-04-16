@@ -314,8 +314,8 @@ namespace PS3000ACSConsole
 
             int timeIndisposed;
 
-            if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-            {
+            //if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
+            //{
                 for (int i = 0; i < _channelCount; i++)
                 {
                     short[] minBuffers = new short[sampleCount];
@@ -330,9 +330,9 @@ namespace PS3000ACSConsole
                         Console.WriteLine("BlockDataHandler:Imports.SetDataBuffers Channel {0} Status = 0x{1:X6}", (char)('A' + i), status);
                     }*/
                 }
-            }
+           // }
 
-            if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
+            /*if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
             {
                 for (int i = 0; i < _digitalPorts; i++)
                 {
@@ -346,7 +346,7 @@ namespace PS3000ACSConsole
                         Console.WriteLine("BlockDataHandler:Imports.SetDataBuffer {0} Status = 0x{1,0:X6}", i + Imports.Channel.PS3000A_DIGITAL_PORT0, status);
                     }
                 }
-            }
+            }*/
 
             /*  find the maximum number of samples, the time interval (in timeUnits),
              *		 the most suitable time units, and the maximum _oversample at the current _timebase*/
@@ -401,102 +401,88 @@ namespace PS3000ACSConsole
                 uint startIndex = 0;
                 uint downSampleRatio = 2;
 
-                if(mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-                {
+                //if(mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
+                //{
                     status = Imports.GetValues(_handle, startIndex, ref sampleCount, downSampleRatio, Imports.RatioMode.Average, segmentIndex, out overflow);
-                }
+                //}
 
-                if(mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
+                /*if(mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
                 {
                     status = Imports.GetValues(_handle, startIndex, ref sampleCount, downSampleRatio, Imports.RatioMode.None, segmentIndex, out overflow);
-                }
+                }*/
 
                 if (status == (short)Imports.PICO_OK)
                 {
-
-                    // Print out the first 10 readings, converting the readings to mV if required
-                    /*Console.WriteLine(text);
-
-                    if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-                    {
-                        Console.WriteLine("Value {0}", (_scaleVoltages) ? ("mV") : ("ADC Counts"));
-
-                        for (int ch = 0; ch < _channelCount; ch++)
-                        {
-                            if (_channelSettings[ch].enabled)
-                                Console.Write("Channel{0}          ", (char)('A' + ch));
-                        }
-                    }
-                    if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
-                        Console.Write("DIGITAL VALUE");
-
-                    Console.WriteLine();*/
-
-
-                    /*for (int i = offset; i < offset + 10; i++)
-                    {
-                        if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-                        {
-                            for (int ch = 0; ch < _channelCount; ch++)
-                            {
-                                if (_channelSettings[ch].enabled)
-                                {
-                                    Console.Write("{0,8}          ", _scaleVoltages ?
-                                        adc_to_mv(maxPinned[ch].Target[i], (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range)  // If _scaleVoltages, show mV values
-                                        : maxPinned[ch].Target[i]);                                                                           // else show ADC counts
-                                }
-                            }
-                        }
-                        if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
-                        {
-                            short digiValue = digiPinned[1].Target[i];
-                            digiValue <<= 8;
-                            digiValue |= digiPinned[0].Target[i];
-                            Console.Write("0x{0,4:X}", digiValue.ToString("X4"));
-                        }
-                        Console.WriteLine();
-                    }*/
-
-                    if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-                    {
+                    //if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
+                    //{
                         sampleCount = Math.Min(sampleCount, BUFFER_SIZE);
                         TextWriter writer = new StreamWriter(BlockFile, false);
-                        writer.Write("For each of the {0} Channels, results shown are....", _channelCount);
-                        writer.WriteLine();
-                        writer.WriteLine("Time interval Maximum Aggregated value ADC Count & mV, Minimum Aggregated value ADC Count & mV");
-                        writer.WriteLine();
+                        int nbChannelEnabled = 0;
+                        int nbChannelRead = 0;
 
                         for (int i = 0; i < _channelCount; i++)
                         {
                             if (_channelSettings[i].enabled)
                             {
-                                writer.Write("Time   Ch  Max ADC    Max mV   Min ADC    Min mV   ");
+                                nbChannelEnabled++;
+                            }
+                        }
+
+                        writer.Write("Temps,");
+
+                        for (int i = 0; i < _channelCount; i++)
+                        {
+                            if (_channelSettings[i].enabled)
+                            {
+                                writer.Write("Voie {0}", (char)('A' + i));
+                                if (nbChannelRead < nbChannelEnabled - 1)
+                                {
+                                    writer.Write(",");
+                                    nbChannelRead++;
+                                }
+                            }
+                        }
+
+                        nbChannelRead = 0;
+                        writer.WriteLine();
+
+                        writer.Write("(ns),");
+                        for (int i = 0; i < _channelCount; i++)
+                        {
+                            if (_channelSettings[i].enabled)
+                            {
+                                writer.Write("(mV)");
+                                if (nbChannelRead < nbChannelEnabled - 1)
+                                {
+                                    writer.Write(",");
+                                    nbChannelRead++;
+                                }
                             }
                         }
 
                         writer.WriteLine();
+                        writer.WriteLine();
 
                         for (int i = 0; i < sampleCount; i++)
                         {
+                            nbChannelRead = 0;
+                            writer.Write("{0},", (i * timeInterval));
                             for (int ch = 0; ch < _channelCount; ch++)
                             {
                                 if (_channelSettings[ch].enabled)
                                 {
-                                    writer.Write("{0,5}  ", (i * timeInterval));
-                                    writer.Write("Ch{0} {1,7}   {2,7}   {3,7}   {4,7}   ",
-                                                   (char)('A' + ch),
-                                                   maxPinned[ch].Target[i],
-                                                   adc_to_mv(maxPinned[ch].Target[i],
-                                                             (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range),
-                                                   minPinned[ch].Target[i],
-                                                   adc_to_mv(minPinned[ch].Target[i],
-                                                             (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range));
+                                    writer.Write("{0}", adc_to_mv(maxPinned[ch].Target[i], (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range));
+                                    if (nbChannelRead < nbChannelEnabled - 1)
+                                    {
+                                        writer.Write(",");
+                                        nbChannelRead++;
+                                    }
                                 }
                             }
                             writer.WriteLine();
                         }
                         writer.Close();
-                    }
+                    //}
                 }
                 else
                 {
@@ -524,8 +510,8 @@ namespace PS3000ACSConsole
 
             Imports.Stop(_handle);
 
-            if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
-            {
+            //if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
+            //{
                 foreach (PinnedArray<short> p in minPinned)
                 {
                     if (p != null)
@@ -536,16 +522,16 @@ namespace PS3000ACSConsole
                     if (p != null)
                         p.Dispose();
                 }
-            }
+            //}
 
-            if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
+            /*if (mode == Imports.Mode.DIGITAL || mode == Imports.Mode.MIXED)
             {
                 foreach (PinnedArray<short> p in digiPinned)
                 {
                     if (p != null)
                         p.Dispose();
                 }
-            }
+            }*/
         }
 
 
@@ -1768,83 +1754,7 @@ namespace PS3000ACSConsole
                 _channelSettings[i].range = Imports.Range.Range_5V;
             }
 
-            SetVoltages(range);
-
-            // Colecting data
-
-            //CollectBlockImmediate();
-
-            /*DisplaySettings();
-
-            Console.WriteLine("");
-            Console.WriteLine("B - Immediate block              V - Set voltages");
-            Console.WriteLine("T - Triggered block              I - Set timebase");
-            Console.WriteLine("R - Rapid block                  A - ADC counts/mV");
-            Console.WriteLine("S - Immediate Streaming");
-            Console.WriteLine("W - Triggered Streaming");
-            Console.WriteLine(_digitalPorts > 0 ? "D - Digital Ports Menu" : "");
-            Console.WriteLine("                                 X - exit");
-            Console.WriteLine("Operation:");*/
-
-            //ch = char.ToUpper(Console.ReadKey(true).KeyChar);
-
-            //Console.WriteLine("\n");
-
-            // main loop - read key and call routine
-            //char ch = ' ';
-            //while (ch != 'X')
-            //{
-
-            /*switch (ch)
-            {
-                case 'B':
-                    CollectBlockImmediate();
-                    break;
-
-                case 'T':
-                    CollectBlockTriggered();
-                    break;
-
-                case 'R':
-                    CollectBlockRapid();
-                    break;
-
-                case 'S':
-                    CollectStreamingImmediate();
-                    break;
-
-                case 'W':
-                    CollectStreamingTriggered();
-                    break;
-
-                case 'V':
-                    SetVoltages();
-                    break;
-
-                case 'I':
-                    SetTimebase();
-                    break;
-
-                case 'A':
-                    _scaleVoltages = !_scaleVoltages;
-                    break;
-
-                case 'D':
-                    if (_digitalPorts > 0)
-                    {
-                        DigitalMenu();
-                    }
-                    break;
-
-                case 'X':
-                    // Handled by outer loop 
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid operation");
-                    break;
-            //}
-        }*/
+            SetVoltages(range);            
         }
 
 
