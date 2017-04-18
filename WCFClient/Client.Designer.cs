@@ -30,11 +30,12 @@
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.buttonPicoPing = new System.Windows.Forms.Button();
-            this.buttonPicoGetStatus = new System.Windows.Forms.Button();
-            this.textBoxPicoFolder = new System.Windows.Forms.TextBox();
+            this.buttonPicoSetPicoscopeMod = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonPicoCaptureBlock = new System.Windows.Forms.Button();
+            this.labelPicoFolder = new System.Windows.Forms.Label();
+            this.buttonPicoFolder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,41 +59,33 @@
             this.buttonPicoPing.UseVisualStyleBackColor = true;
             this.buttonPicoPing.Click += new System.EventHandler(this.buttonPicoPing_Click);
             // 
-            // buttonPicoGetStatus
+            // buttonPicoSetPicoscopeMod
             // 
-            this.buttonPicoGetStatus.Location = new System.Drawing.Point(108, 31);
-            this.buttonPicoGetStatus.Name = "buttonPicoGetStatus";
-            this.buttonPicoGetStatus.Size = new System.Drawing.Size(109, 23);
-            this.buttonPicoGetStatus.TabIndex = 3;
-            this.buttonPicoGetStatus.Text = "Set picoscope";
-            this.buttonPicoGetStatus.UseVisualStyleBackColor = true;
-            this.buttonPicoGetStatus.Click += new System.EventHandler(this.buttonPicoGetStatus_Click_1);
-            // 
-            // textBoxPicoFolder
-            // 
-            this.textBoxPicoFolder.Location = new System.Drawing.Point(79, 78);
-            this.textBoxPicoFolder.Name = "textBoxPicoFolder";
-            this.textBoxPicoFolder.Size = new System.Drawing.Size(222, 20);
-            this.textBoxPicoFolder.TabIndex = 4;
-            this.textBoxPicoFolder.Text = "measures";
-            this.textBoxPicoFolder.TextChanged += new System.EventHandler(this.textBoxPicoFolder_TextChanged);
+            this.buttonPicoSetPicoscopeMod.Location = new System.Drawing.Point(108, 31);
+            this.buttonPicoSetPicoscopeMod.Name = "buttonPicoSetPicoscopeMod";
+            this.buttonPicoSetPicoscopeMod.Size = new System.Drawing.Size(128, 23);
+            this.buttonPicoSetPicoscopeMod.TabIndex = 3;
+            this.buttonPicoSetPicoscopeMod.Text = "Change picoscope mod";
+            this.buttonPicoSetPicoscopeMod.UseVisualStyleBackColor = true;
+            this.buttonPicoSetPicoscopeMod.Click += new System.EventHandler(this.buttonPicoSetMod_Click_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 81);
+            this.label1.Location = new System.Drawing.Point(105, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Folder :";
+            this.label1.Text = "Current folder :";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonPicoFolder);
+            this.groupBox1.Controls.Add(this.labelPicoFolder);
             this.groupBox1.Controls.Add(this.buttonPicoCaptureBlock);
             this.groupBox1.Controls.Add(this.buttonPicoPing);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBoxPicoFolder);
-            this.groupBox1.Controls.Add(this.buttonPicoGetStatus);
+            this.groupBox1.Controls.Add(this.buttonPicoSetPicoscopeMod);
             this.groupBox1.Location = new System.Drawing.Point(0, 101);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(700, 137);
@@ -102,13 +95,32 @@
             // 
             // buttonPicoCaptureBlock
             // 
-            this.buttonPicoCaptureBlock.Location = new System.Drawing.Point(226, 31);
+            this.buttonPicoCaptureBlock.Location = new System.Drawing.Point(242, 31);
             this.buttonPicoCaptureBlock.Name = "buttonPicoCaptureBlock";
             this.buttonPicoCaptureBlock.Size = new System.Drawing.Size(75, 23);
             this.buttonPicoCaptureBlock.TabIndex = 6;
             this.buttonPicoCaptureBlock.Text = "Capture";
             this.buttonPicoCaptureBlock.UseVisualStyleBackColor = true;
             this.buttonPicoCaptureBlock.Click += new System.EventHandler(this.buttonPicoCaptureBlock_Click);
+            // 
+            // labelPicoFolder
+            // 
+            this.labelPicoFolder.AutoSize = true;
+            this.labelPicoFolder.Location = new System.Drawing.Point(187, 74);
+            this.labelPicoFolder.Name = "labelPicoFolder";
+            this.labelPicoFolder.Size = new System.Drawing.Size(16, 13);
+            this.labelPicoFolder.TabIndex = 7;
+            this.labelPicoFolder.Text = "...";
+            // 
+            // buttonPicoFolder
+            // 
+            this.buttonPicoFolder.Location = new System.Drawing.Point(27, 69);
+            this.buttonPicoFolder.Name = "buttonPicoFolder";
+            this.buttonPicoFolder.Size = new System.Drawing.Size(75, 23);
+            this.buttonPicoFolder.TabIndex = 8;
+            this.buttonPicoFolder.Text = "Change";
+            this.buttonPicoFolder.UseVisualStyleBackColor = true;
+            this.buttonPicoFolder.Click += new System.EventHandler(this.buttonPicoFolder_Click);
             // 
             // FormClient
             // 
@@ -131,11 +143,12 @@
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button buttonPicoPing;
-        private System.Windows.Forms.Button buttonPicoGetStatus;
-        private System.Windows.Forms.TextBox textBoxPicoFolder;
+        private System.Windows.Forms.Button buttonPicoSetPicoscopeMod;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonPicoCaptureBlock;
+        private System.Windows.Forms.Button buttonPicoFolder;
+        private System.Windows.Forms.Label labelPicoFolder;
     }
 }
 

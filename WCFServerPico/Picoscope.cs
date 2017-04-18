@@ -31,9 +31,9 @@ namespace WCFServer
                 return true;
             }
 
-            public bool picoGetStatus()
+            public bool picoChangeMod()
             {
-                return ihm.getSettingsStatus();
+                return ihm.changeServerMod();
             }
 
             public void setFileName(string fileName)
@@ -250,9 +250,56 @@ namespace WCFServer
             buttonSetPico.Enabled = true;
         }
 
-        public bool getSettingsStatus()
+        /* change server mod :
+         * if settings are incorrect return false
+         * */
+        public bool changeServerMod()
         {
-            return buttonImediateBlock.Enabled;
+            if (buttonImediateBlock.Enabled)
+            {
+                setServerMod(true);
+                return true;
+            }
+            else if(!buttonSetPico.Enabled)
+            {
+                setServerMod(false);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /* Set server mod : use it to avoid changes to the settings
+         * mod = True -> automatic mod : the client is giving the orders
+         * mod = False -> manual mod : used for setting the parameters
+         * */
+        private void setServerMod(bool mod)
+        {
+            if (mod)
+            {
+                buttonImediateBlock.Enabled = false;
+                buttonSetPico.Enabled = false;
+                textBoxFileName.Enabled = false;
+                textBoxSampleCount.Enabled = false;
+                textBoxSetPeriod.Enabled = false;
+                trackBarChA.Enabled = false;
+                trackBarChB.Enabled = false;
+                trackBarChC.Enabled = false;
+                trackBarChD.Enabled = false;
+            }
+            else
+            {
+                buttonImediateBlock.Enabled = true;
+                textBoxFileName.Enabled = true;
+                textBoxSampleCount.Enabled = true;
+                textBoxSetPeriod.Enabled = true;
+                trackBarChA.Enabled = true;
+                trackBarChB.Enabled = true;
+                trackBarChC.Enabled = true;
+                trackBarChD.Enabled = true;
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace WCF
         [OperationContract]
         bool Ping();
         [OperationContract]
-        bool picoGetStatus();
+        bool picoChangeMod();
         [OperationContract]
         void setFileName(string filename);
         [OperationContract]
