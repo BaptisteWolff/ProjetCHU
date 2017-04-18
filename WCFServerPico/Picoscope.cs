@@ -13,15 +13,15 @@ using PS3000ACSConsole;
 
 namespace WCFServer
 {
-    public partial class FormServeur : Form
+    public partial class FormServeurPicoscope : Form
     {
         
 
         [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-        class ServiceImplementation : WCF.IService
+        class ServiceImplementation : WCF.IServicePicoscope
         {
-            FormServeur ihm;
-            public ServiceImplementation(FormServeur f)
+            FormServeurPicoscope ihm;
+            public ServiceImplementation(FormServeurPicoscope f)
             {
                 ihm = f;
             }
@@ -31,20 +31,24 @@ namespace WCFServer
                 return true;
             }
 
-            public bool picoCommand(string filename)
+            public bool picoGetStatus()
             {
-                bool success;
-                success = ihm.setPico(filename);
-                if (success) { ihm.collectBlock(); }
-                return success;
+                return ihm.getSettingsStatus();
+            }
+
+            public void setFileName(string fileName)
+            {
+                ihm.setFileName(fileName);
+            }
+
+            public void collectBlock()
+            {
+                ihm.collectBlock();
             }
         }
 
         ServiceHost svh;
         PS3000ACSConsole.PS3000ACSConsole _pico;
-        uint _timebase = 2;
-        // T(ns) = (timebase-2) * 8 for timebase > 2
-        // T(ns) = 4 for timebase = 2
 
         uint[] _range;
         /*
@@ -60,11 +64,11 @@ namespace WCFServer
         */
         String[] _trackbarValues;
 
-        public FormServeur()
+        public FormServeurPicoscope()
         {
             InitializeComponent();
             svh = new ServiceHost(new ServiceImplementation(this));
-            svh.AddServiceEndpoint(typeof(WCF.IService), new NetTcpBinding(), "net.tcp://localhost:8002");
+            svh.AddServiceEndpoint(typeof(WCF.IServicePicoscope), new NetTcpBinding(), "net.tcp://localhost:8002");
             svh.Open();
             _pico = new PS3000ACSConsole.PS3000ACSConsole();
             _range = new uint[4];
@@ -78,6 +82,8 @@ namespace WCFServer
             labelChB.Text = _trackbarValues[trackBarChB.Value];
             labelChC.Text = _trackbarValues[trackBarChC.Value];
             labelChD.Text = _trackbarValues[trackBarChD.Value];
+
+            setPico();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,17 +94,14 @@ namespace WCFServer
         private void buttonImmediateBlock_Click(object sender, EventArgs e)
         {
             listBox1.Items.Add("Immediate Block ...");
-            bool picoSet = setPico(textBoxFileName.Text);
-            if (picoSet)
-            {
-                collectBlock();
-                listBox1.Items.Add("Done.");
-            }
+            collectBlock();
+            listBox1.Items.Add("Done.");
         }
 
-        // Set PicoScope
-        public bool setPico(string filename)
+        /* Set PicoScope */
+        private bool setPico()
         {
+            /* Set sample count */
             int sampleCount = 0;
             try
             {
@@ -113,15 +116,39 @@ namespace WCFServer
                 listBox1.Items.Add("Error : invalid number of samples");
                 return false;
             }
-            else
+
+            /* Set timebase */
+            string period = textBoxSetPeriod.Text;
+            uint timebase;
+            // T(ns) = (timebase-2) * 8 for timebase > 2
+            // T(ns) = 4 for timebase = 2
+            try
             {
-                _pico.setPico(_timebase, sampleCount, filename, _range);
-                //_pico.CollectBlockImmediate();
-                return true;
+                timebase = toTimeBase(Convert.ToUInt32(period));
             }
+            catch (Exception f)
+            {
+                listBox1.Items.Add("Error : invalid period.");
+                return false;
+            }
+            // Display the information of the new timebase to the user
+            period = toPeriod(timebase).ToString();
+            textBoxSetPeriod.Text = period;
+
+            /* Set filename */
+            string filename = textBoxFileName.Text;
+
+            _pico.setPico(timebase, sampleCount, filename, _range);
+            buttonSetPico.Enabled = false;
+            return true;
         }
 
-        // Capture data from PicoScope
+        public void setFileName(string fileName)
+        {
+            _pico.SetFilename(fileName);
+        }
+
+        /* Capture data from PicoScope */
         public void collectBlock()
         {
             _pico.CollectBlockImmediate();
@@ -138,7 +165,7 @@ namespace WCFServer
         }
 
 
-        // Convert the period in ns to the timebase
+        /* Convert the period in ns to the timebase */
         private uint toTimeBase(uint period)
         {
             // Round down
@@ -146,7 +173,7 @@ namespace WCFServer
             return timebase;
         }
 
-        // Convert the timebase to the period in ns
+        /* Convert the timebase to the period in ns */
         private uint toPeriod(uint timeBase)
         {
             uint period = (timeBase - 2) * 8;
@@ -154,22 +181,12 @@ namespace WCFServer
             return (period);
         }
 
-        private void buttonSetPeriod_Click(object sender, EventArgs e)
+        private void buttonSetPico_Click(object sender, EventArgs e)
         {
-            string period = textBoxSetPeriod.Text;
-            try
+            if(setPico())
             {
-                // set the new timebase
-                _timebase = toTimeBase(Convert.ToUInt32(period));
+                buttonImediateBlock.Enabled = true;
             }
-            catch (Exception f)
-            {
-                listBox1.Items.Add("Invalid number.");
-            }
-            // Display the information of the new timebase to the user
-            period = toPeriod(_timebase).ToString();
-            textBoxSetPeriod.Text = period;
-            listBox1.Items.Add("Period set to " + period + " ns");
         }
 
         private uint trackBarToRange(int tValue)
@@ -184,6 +201,8 @@ namespace WCFServer
             int tValue = trackBarChA.Value;
             _range[0] = trackBarToRange(tValue);
             labelChA.Text = _trackbarValues[tValue];
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
         }
 
         private void trackBarChB_Scroll(object sender, EventArgs e)
@@ -191,6 +210,8 @@ namespace WCFServer
             int tValue = trackBarChB.Value;
             _range[1] = trackBarToRange(tValue);
             labelChB.Text = _trackbarValues[tValue];
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
         }
 
         private void trackBarChC_Scroll(object sender, EventArgs e)
@@ -198,6 +219,8 @@ namespace WCFServer
             int tValue = trackBarChC.Value;
             _range[2] = trackBarToRange(tValue);
             labelChC.Text = _trackbarValues[tValue];
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
         }
 
         private void trackBarChD_Scroll(object sender, EventArgs e)
@@ -205,6 +228,31 @@ namespace WCFServer
             int tValue = trackBarChD.Value;
             _range[3] = trackBarToRange(tValue);
             labelChD.Text = _trackbarValues[tValue];
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
+        }
+
+        private void textBoxSetPeriod_TextChanged(object sender, EventArgs e)
+        {
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
+        }
+
+        private void textBoxSampleCount_TextChanged(object sender, EventArgs e)
+        {
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
+        }
+
+        private void textBoxFileName_TextChanged(object sender, EventArgs e)
+        {
+            buttonImediateBlock.Enabled = false;
+            buttonSetPico.Enabled = true;
+        }
+
+        public bool getSettingsStatus()
+        {
+            return buttonImediateBlock.Enabled;
         }
     }
 }

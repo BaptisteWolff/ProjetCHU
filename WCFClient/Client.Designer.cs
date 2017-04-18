@@ -29,97 +29,113 @@
         private void InitializeComponent()
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBoxPing = new System.Windows.Forms.TextBox();
-            this.buttonPing = new System.Windows.Forms.Button();
-            this.buttonPicoCommand = new System.Windows.Forms.Button();
-            this.textBoxPicoCommand = new System.Windows.Forms.TextBox();
+            this.buttonPicoPing = new System.Windows.Forms.Button();
+            this.buttonPicoGetStatus = new System.Windows.Forms.Button();
+            this.textBoxPicoFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonPicoCaptureBlock = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 139);
+            this.listBox1.Location = new System.Drawing.Point(0, 342);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(455, 134);
+            this.listBox1.Size = new System.Drawing.Size(700, 134);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // textBoxPing
+            // buttonPicoPing
             // 
-            this.textBoxPing.Location = new System.Drawing.Point(11, 9);
-            this.textBoxPing.Name = "textBoxPing";
-            this.textBoxPing.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPing.TabIndex = 1;
-            this.textBoxPing.Text = "Pico";
-            this.textBoxPing.TextChanged += new System.EventHandler(this.textBoxPing_TextChanged);
+            this.buttonPicoPing.Location = new System.Drawing.Point(27, 31);
+            this.buttonPicoPing.Name = "buttonPicoPing";
+            this.buttonPicoPing.Size = new System.Drawing.Size(75, 23);
+            this.buttonPicoPing.TabIndex = 2;
+            this.buttonPicoPing.Text = "Ping";
+            this.buttonPicoPing.UseVisualStyleBackColor = true;
+            this.buttonPicoPing.Click += new System.EventHandler(this.buttonPicoPing_Click);
             // 
-            // buttonPing
+            // buttonPicoGetStatus
             // 
-            this.buttonPing.Location = new System.Drawing.Point(151, 6);
-            this.buttonPing.Name = "buttonPing";
-            this.buttonPing.Size = new System.Drawing.Size(75, 23);
-            this.buttonPing.TabIndex = 2;
-            this.buttonPing.Text = "Ping";
-            this.buttonPing.UseVisualStyleBackColor = true;
-            this.buttonPing.Click += new System.EventHandler(this.buttonPing_Click);
+            this.buttonPicoGetStatus.Location = new System.Drawing.Point(108, 31);
+            this.buttonPicoGetStatus.Name = "buttonPicoGetStatus";
+            this.buttonPicoGetStatus.Size = new System.Drawing.Size(109, 23);
+            this.buttonPicoGetStatus.TabIndex = 3;
+            this.buttonPicoGetStatus.Text = "Set picoscope";
+            this.buttonPicoGetStatus.UseVisualStyleBackColor = true;
+            this.buttonPicoGetStatus.Click += new System.EventHandler(this.buttonPicoGetStatus_Click_1);
             // 
-            // buttonPicoCommand
+            // textBoxPicoFolder
             // 
-            this.buttonPicoCommand.Location = new System.Drawing.Point(304, 51);
-            this.buttonPicoCommand.Name = "buttonPicoCommand";
-            this.buttonPicoCommand.Size = new System.Drawing.Size(139, 23);
-            this.buttonPicoCommand.TabIndex = 3;
-            this.buttonPicoCommand.Text = "Send pico capture signal";
-            this.buttonPicoCommand.UseVisualStyleBackColor = true;
-            this.buttonPicoCommand.Click += new System.EventHandler(this.buttonPicoCommand_Click_1);
-            // 
-            // textBoxPicoCommand
-            // 
-            this.textBoxPicoCommand.Location = new System.Drawing.Point(76, 53);
-            this.textBoxPicoCommand.Name = "textBoxPicoCommand";
-            this.textBoxPicoCommand.Size = new System.Drawing.Size(222, 20);
-            this.textBoxPicoCommand.TabIndex = 4;
-            this.textBoxPicoCommand.Text = "block.csv";
+            this.textBoxPicoFolder.Location = new System.Drawing.Point(79, 78);
+            this.textBoxPicoFolder.Name = "textBoxPicoFolder";
+            this.textBoxPicoFolder.Size = new System.Drawing.Size(222, 20);
+            this.textBoxPicoFolder.TabIndex = 4;
+            this.textBoxPicoFolder.Text = "measures";
+            this.textBoxPicoFolder.TextChanged += new System.EventHandler(this.textBoxPicoFolder_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 56);
+            this.label1.Location = new System.Drawing.Point(15, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "File name :";
+            this.label1.Text = "Folder :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonPicoCaptureBlock);
+            this.groupBox1.Controls.Add(this.buttonPicoPing);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxPicoFolder);
+            this.groupBox1.Controls.Add(this.buttonPicoGetStatus);
+            this.groupBox1.Location = new System.Drawing.Point(0, 101);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(700, 137);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Picoscope";
+            // 
+            // buttonPicoCaptureBlock
+            // 
+            this.buttonPicoCaptureBlock.Location = new System.Drawing.Point(226, 31);
+            this.buttonPicoCaptureBlock.Name = "buttonPicoCaptureBlock";
+            this.buttonPicoCaptureBlock.Size = new System.Drawing.Size(75, 23);
+            this.buttonPicoCaptureBlock.TabIndex = 6;
+            this.buttonPicoCaptureBlock.Text = "Capture";
+            this.buttonPicoCaptureBlock.UseVisualStyleBackColor = true;
+            this.buttonPicoCaptureBlock.Click += new System.EventHandler(this.buttonPicoCaptureBlock_Click);
             // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 273);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxPicoCommand);
-            this.Controls.Add(this.buttonPicoCommand);
-            this.Controls.Add(this.buttonPing);
-            this.Controls.Add(this.textBoxPing);
+            this.ClientSize = new System.Drawing.Size(700, 476);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBox1);
             this.Name = "FormClient";
             this.Text = "Client";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClient_FormClosed);
             this.Load += new System.EventHandler(this.FormClient_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBoxPing;
-        private System.Windows.Forms.Button buttonPing;
-        private System.Windows.Forms.Button buttonPicoCommand;
-        private System.Windows.Forms.TextBox textBoxPicoCommand;
+        private System.Windows.Forms.Button buttonPicoPing;
+        private System.Windows.Forms.Button buttonPicoGetStatus;
+        private System.Windows.Forms.TextBox textBoxPicoFolder;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonPicoCaptureBlock;
     }
 }
 

@@ -58,8 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WCFServerPico\IService.cs">
-      <Link>IService.cs</Link>
+    <Compile Include="..\WCFServerPico\IServicePicoscope.cs">
+      <Link>IServicePicoscope.cs</Link>
     </Compile>
     <Compile Include="Client.cs">
       <SubType>Form</SubType>

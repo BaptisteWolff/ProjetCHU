@@ -15,7 +15,7 @@ namespace WCFServer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormServeur());
+            Application.Run(new FormServeurPicoscope());
         }
     }
 }

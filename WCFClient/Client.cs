@@ -15,22 +15,29 @@ namespace WCFClient
     public partial class FormClient : Form
     {
 
-        ChannelFactory<WCF.IService> scf;
-        WCF.IService s;
+        ChannelFactory<WCF.IServicePicoscope> picoChannel;
+        WCF.IServicePicoscope pico;
+        double x, y, z;
 
         public FormClient()
         {
             InitializeComponent();
-            scf = new ChannelFactory<WCF.IService>(new NetTcpBinding(), "net.tcp://localhost:8002");
-            s = scf.CreateChannel();
+            picoChannel = new ChannelFactory<WCF.IServicePicoscope>(new NetTcpBinding(), "net.tcp://localhost:8002");
+            pico = picoChannel.CreateChannel();
+
+            x = 0;
+            y = 0;
+            z = 0;
+
+            buttonPicoCaptureBlock.Enabled = false;
         }
 
-        private void buttonPing_Click(object sender, EventArgs e)
+        private void buttonPicoPing_Click(object sender, EventArgs e)
         {
             bool response;
             try
             {
-                response = s.Ping();
+                response = pico.Ping();
             } catch
             {
                 response = false;
@@ -40,15 +47,10 @@ namespace WCFClient
 
         private void FormClient_FormClosed(object sender, FormClosedEventArgs e)
         {
-            (s as ICommunicationObject).Close();
+            (pico as ICommunicationObject).Close();
         }
 
         private void FormClient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPing_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -58,12 +60,31 @@ namespace WCFClient
 
         }
 
-        private void buttonPicoCommand_Click_1(object sender, EventArgs e)
+        private void buttonPicoCaptureBlock_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add("Picoscope is capturing the data ... ...");
-            bool success = s.picoCommand(textBoxPicoCommand.Text);
-            if (success) { listBox1.Items.Add("Done."); }
-            else { listBox1.Items.Add("Failed."); }
+            pico.collectBlock();
+            listBox1.Items.Add("Data saved");
+            buttonPicoCaptureBlock.Enabled = false;
+        }
+
+        private void buttonPicoGetStatus_Click_1(object sender, EventArgs e)
+        {
+            pico.setFileName(textBoxPicoFolder.Text + z.ToString() + x.ToString() + y.ToString() + ".csv");
+            if (pico.picoGetStatus())
+            {
+                listBox1.Items.Add("Picoscope is ready");
+                buttonPicoCaptureBlock.Enabled = true;
+            }
+            else
+            {
+                listBox1.Items.Add("Failed : please check the settings on the server.");
+                buttonPicoCaptureBlock.Enabled = false;
+            }
+        }
+        
+        private void textBoxPicoFolder_TextChanged(object sender, EventArgs e)
+        {
+            buttonPicoCaptureBlock.Enabled = false;
         }
     }
 }

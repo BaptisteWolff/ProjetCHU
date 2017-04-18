@@ -415,7 +415,7 @@ namespace PS3000ACSConsole
                 {
                     //if (mode == Imports.Mode.ANALOGUE || mode == Imports.Mode.MIXED)
                     //{
-                        sampleCount = Math.Min(sampleCount, BUFFER_SIZE);
+                        //sampleCount = Math.Min(sampleCount, BUFFER_SIZE);
                         TextWriter writer = new StreamWriter(BlockFile, false);
                         int nbChannelEnabled = 0;
                         int nbChannelRead = 0;
@@ -795,14 +795,192 @@ namespace PS3000ACSConsole
         ****************************************************************************/
         public void CollectBlockImmediate()
         {
-            //Console.WriteLine("Collect block immediate...");
+            uint status;
+            bool retry;
+            uint sampleCount = Convert.ToUInt32(_sampleCount);
+            ushort segmentIndex = 0;
 
-            SetDefaults();
+            PinnedArray<short>[] minPinned = new PinnedArray<short>[_channelCount];
+            PinnedArray<short>[] maxPinned = new PinnedArray<short>[_channelCount];
+            PinnedArray<short>[] digiPinned = new PinnedArray<short>[_digitalPorts];
 
-            /* Trigger disabled	*/
-            SetTrigger(null, 0, null, 0, null, null, 0, 0, 0);
+            int timeIndisposed;
+                        
+            for (int i = 0; i < _channelCount; i++)
+            {
+                short[] minBuffers = new short[sampleCount];
+                short[] maxBuffers = new short[sampleCount];
+                minPinned[i] = new PinnedArray<short>(minBuffers);
+                maxPinned[i] = new PinnedArray<short>(maxBuffers);
 
-            BlockDataHandler("First 10 readings", 0, Imports.Mode.ANALOGUE);
+                status = Imports.SetDataBuffers(_handle, (Imports.Channel)i, maxBuffers, minBuffers, (int)sampleCount, segmentIndex, Imports.RatioMode.Average);
+
+                /*if (status != Imports.PICO_OK)
+                {
+                    Console.WriteLine("BlockDataHandler:Imports.SetDataBuffers Channel {0} Status = 0x{1:X6}", (char)('A' + i), status);
+                }*/
+            }
+            
+            /*  find the maximum number of samples, the time interval (in timeUnits),
+             *		 the most suitable time units, and the maximum _oversample at the current _timebase*/
+            int timeInterval;
+            int maxSamples;
+            while (Imports.GetTimebase(_handle, _timebase, (int)sampleCount, out timeInterval, _oversample, out maxSamples, 0) != 0)
+            {
+                //Console.WriteLine("Selected timebase {0} could not be used\n", _timebase);
+                _timebase++;
+
+            }
+            //Console.WriteLine("Timebase: {0}\toversample:{1}\n", _timebase, _oversample);
+
+            /* Start it collecting, then wait for completion*/
+            _ready = false;
+            _callbackDelegate = BlockCallback;
+
+            do
+            {
+                retry = false;
+
+                status = Imports.RunBlock(_handle, 0, (int)sampleCount, _timebase, _oversample, out timeIndisposed, 0, _callbackDelegate, IntPtr.Zero);
+
+                if (status == (short)Imports.PICO_POWER_SUPPLY_CONNECTED || status == (short)Imports.PICO_POWER_SUPPLY_NOT_CONNECTED || status == (short)Imports.PICO_POWER_SUPPLY_UNDERVOLTAGE)
+                {
+                    status = PowerSourceSwitch(_handle, status);
+                    retry = true;
+                }
+                /*else
+                {
+                    Console.WriteLine(status != (short)Imports.PICO_OK ? "BlockDataHandler:Imports.RunBlock Status = 0x{0:X6}" : "", status);
+                }*/
+            }
+            while (retry);
+
+            //Console.WriteLine("Waiting for data...");
+            //Console.WriteLine();
+
+
+            while (!_ready)
+            {
+                Thread.Sleep(100);
+            }
+
+            Imports.Stop(_handle);
+
+            if (_ready)
+            {
+                short overflow;
+                uint startIndex = 0;
+                uint downSampleRatio = 2;
+
+                status = Imports.GetValues(_handle, startIndex, ref sampleCount, downSampleRatio, Imports.RatioMode.Average, segmentIndex, out overflow);
+              
+                /* Writing data in the file */
+
+                if (status == (short)Imports.PICO_OK)
+                {                                       
+                    TextWriter writer = new StreamWriter(BlockFile, false);
+                    int nbChannelEnabled = 0;
+                    int nbChannelRead = 0;
+
+                    for (int i = 0; i < _channelCount; i++)
+                    {
+                        if (_channelSettings[i].enabled)
+                        {
+                            nbChannelEnabled++;
+                        }
+                    }
+
+                    writer.Write("Temps,");
+
+                    for (int i = 0; i < _channelCount; i++)
+                    {
+                        if (_channelSettings[i].enabled)
+                        {
+                            writer.Write("Voie {0}", (char)('A' + i));
+                            if (nbChannelRead < nbChannelEnabled - 1)
+                            {
+                                writer.Write(",");
+                                nbChannelRead++;
+                            }
+                        }
+                    }
+
+                    nbChannelRead = 0;
+                    writer.WriteLine();
+
+                    writer.Write("(ns),");
+                    for (int i = 0; i < _channelCount; i++)
+                    {
+                        if (_channelSettings[i].enabled)
+                        {
+                            writer.Write("(mV)");
+                            if (nbChannelRead < nbChannelEnabled - 1)
+                            {
+                                writer.Write(",");
+                                nbChannelRead++;
+                            }
+                        }
+                    }
+
+                    writer.WriteLine();
+                    writer.WriteLine();
+
+                    for (int i = 0; i < sampleCount; i++)
+                    {
+                        nbChannelRead = 0;
+                        writer.Write("{0},", (i * timeInterval));
+                        for (int ch = 0; ch < _channelCount; ch++)
+                        {
+                            if (_channelSettings[ch].enabled)
+                            {
+                                writer.Write("{0}", adc_to_mv(maxPinned[ch].Target[i], (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range));
+                                if (nbChannelRead < nbChannelEnabled - 1)
+                                {
+                                    writer.Write(",");
+                                    nbChannelRead++;
+                                }
+                            }
+                        }
+                        writer.WriteLine();
+                    }
+                    writer.Close();
+                }
+                else
+                {
+                    if (status == (short)Imports.PICO_POWER_SUPPLY_CONNECTED || status == (short)Imports.PICO_POWER_SUPPLY_NOT_CONNECTED || status == (short)Imports.PICO_POWER_SUPPLY_UNDERVOLTAGE)
+                    {
+                        if (status == (short)Imports.PICO_POWER_SUPPLY_UNDERVOLTAGE)
+                        {
+                            status = PowerSourceSwitch(_handle, status);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Power source changed. Data collection aborted");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("BlockDataHandler:Imports.GetValues Status = 0x{0:X6}", status);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("data collection aborted");
+            }
+
+            Imports.Stop(_handle);
+
+            foreach (PinnedArray<short> p in minPinned)
+            {
+                if (p != null)
+                    p.Dispose();
+            }
+            foreach (PinnedArray<short> p in maxPinned)
+            {
+                if (p != null)
+                    p.Dispose();
+            }
         }
 
         /****************************************************************************
@@ -945,7 +1123,7 @@ namespace PS3000ACSConsole
                             _digitalPorts = 0;
 
                     }
-                    Console.WriteLine("{0}: {1}", description[i], line);
+                    //Console.WriteLine("{0}: {1}", description[i], line);
                 }
             }
         }
@@ -1754,7 +1932,12 @@ namespace PS3000ACSConsole
                 _channelSettings[i].range = Imports.Range.Range_5V;
             }
 
-            SetVoltages(range);            
+            SetVoltages(range);
+
+            SetDefaults();
+
+            /* Trigger disabled	*/
+            SetTrigger(null, 0, null, 0, null, null, 0, 0, 0);
         }
 
 

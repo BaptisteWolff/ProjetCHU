@@ -1,6 +1,6 @@
 ﻿namespace WCFServer
 {
-    partial class FormServeur
+    partial class FormServeurPicoscope
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -31,12 +31,13 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.buttonImediateBlock = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSampleCount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.textBoxSetPeriod = new System.Windows.Forms.TextBox();
-            this.buttonSetPeriod = new System.Windows.Forms.Button();
+            this.buttonSetPico = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.labelChD = new System.Windows.Forms.Label();
@@ -70,23 +71,24 @@
             // 
             // buttonImediateBlock
             // 
-            this.buttonImediateBlock.Location = new System.Drawing.Point(7, 12);
+            this.buttonImediateBlock.Location = new System.Drawing.Point(127, 12);
             this.buttonImediateBlock.Name = "buttonImediateBlock";
             this.buttonImediateBlock.Size = new System.Drawing.Size(98, 23);
             this.buttonImediateBlock.TabIndex = 3;
-            this.buttonImediateBlock.Text = "Immediate block";
+            this.buttonImediateBlock.Text = "Capture signal";
             this.buttonImediateBlock.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonImediateBlock.UseVisualStyleBackColor = true;
             this.buttonImediateBlock.Click += new System.EventHandler(this.buttonImmediateBlock_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxSampleCount);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxFileName);
             this.groupBox1.Controls.Add(this.textBoxSetPeriod);
-            this.groupBox1.Controls.Add(this.buttonSetPeriod);
+            this.groupBox1.Controls.Add(this.buttonSetPico);
             this.groupBox1.Controls.Add(this.buttonImediateBlock);
             this.groupBox1.Location = new System.Drawing.Point(325, 0);
             this.groupBox1.Name = "groupBox1";
@@ -94,6 +96,15 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Period (ns) :";
             // 
             // label2
             // 
@@ -111,6 +122,7 @@
             this.textBoxSampleCount.Size = new System.Drawing.Size(100, 20);
             this.textBoxSampleCount.TabIndex = 8;
             this.textBoxSampleCount.Text = "512";
+            this.textBoxSampleCount.TextChanged += new System.EventHandler(this.textBoxSampleCount_TextChanged);
             // 
             // label1
             // 
@@ -128,6 +140,7 @@
             this.textBoxFileName.Size = new System.Drawing.Size(155, 20);
             this.textBoxFileName.TabIndex = 6;
             this.textBoxFileName.Text = "block.csv";
+            this.textBoxFileName.TextChanged += new System.EventHandler(this.textBoxFileName_TextChanged);
             // 
             // textBoxSetPeriod
             // 
@@ -136,16 +149,17 @@
             this.textBoxSetPeriod.Size = new System.Drawing.Size(100, 20);
             this.textBoxSetPeriod.TabIndex = 5;
             this.textBoxSetPeriod.Text = "4";
+            this.textBoxSetPeriod.TextChanged += new System.EventHandler(this.textBoxSetPeriod_TextChanged);
             // 
-            // buttonSetPeriod
+            // buttonSetPico
             // 
-            this.buttonSetPeriod.Location = new System.Drawing.Point(7, 109);
-            this.buttonSetPeriod.Name = "buttonSetPeriod";
-            this.buttonSetPeriod.Size = new System.Drawing.Size(97, 23);
-            this.buttonSetPeriod.TabIndex = 5;
-            this.buttonSetPeriod.Text = "Set Period (ns)";
-            this.buttonSetPeriod.UseVisualStyleBackColor = true;
-            this.buttonSetPeriod.Click += new System.EventHandler(this.buttonSetPeriod_Click);
+            this.buttonSetPico.Location = new System.Drawing.Point(9, 12);
+            this.buttonSetPico.Name = "buttonSetPico";
+            this.buttonSetPico.Size = new System.Drawing.Size(97, 23);
+            this.buttonSetPico.TabIndex = 5;
+            this.buttonSetPico.Text = "Set Picoscope";
+            this.buttonSetPico.UseVisualStyleBackColor = true;
+            this.buttonSetPico.Click += new System.EventHandler(this.buttonSetPico_Click);
             // 
             // groupBox2
             // 
@@ -319,7 +333,7 @@
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button buttonImediateBlock;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonSetPeriod;
+        private System.Windows.Forms.Button buttonSetPico;
         private System.Windows.Forms.TextBox textBoxSetPeriod;
         private System.Windows.Forms.TextBox textBoxFileName;
         private System.Windows.Forms.Label label1;
@@ -338,6 +352,7 @@
         private System.Windows.Forms.TrackBar trackBarChB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelChA;
+        private System.Windows.Forms.Label label5;
     }
 }
 
