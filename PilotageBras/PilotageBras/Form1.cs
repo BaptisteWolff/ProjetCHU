@@ -22,42 +22,42 @@ namespace PilotageBras
 
         private void Xdec_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionX.Text) - Int32.Parse(interval.Text);
+            float temp = float.Parse(positionX.Text) - float.Parse(interval.Text);
             string newX = temp.ToString();
             positionX.Text = newX;
         }
 
         private void Xinc_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionX.Text) + Int32.Parse(interval.Text);
+            float temp = float.Parse(positionX.Text) + float.Parse(interval.Text);
             string newX = temp.ToString();
             positionX.Text = newX;
         }
 
         private void Ydec_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionY.Text) - Int32.Parse(interval.Text);
+            float temp = float.Parse(positionY.Text) - float.Parse(interval.Text);
             string newY = temp.ToString();
             positionY.Text = newY;
         }
 
         private void Yinc_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionY.Text) + Int32.Parse(interval.Text);
+            float temp = float.Parse(positionY.Text) + float.Parse(interval.Text);
             string newY = temp.ToString();
             positionY.Text = newY;
         }
 
         private void Zdec_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionZ.Text) - Int32.Parse(interval.Text);
+            float temp = float.Parse(positionZ.Text) - float.Parse(interval.Text);
             string newZ = temp.ToString();
             positionZ.Text = newZ;
         }
 
         private void Zinc_Click(object sender, EventArgs e)
         {
-            int temp = Int32.Parse(positionZ.Text) + Int32.Parse(interval.Text);
+            float temp = float.Parse(positionZ.Text) + float.Parse(interval.Text);
             string newZ = temp.ToString();
             positionZ.Text = newZ;
         }

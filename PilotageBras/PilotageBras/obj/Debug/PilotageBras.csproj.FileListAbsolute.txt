@@ -13,3 +13,9 @@ C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\Pilota
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Form1.resources
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Properties.Resources.resources
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csproj.GenerateResource.Cache
