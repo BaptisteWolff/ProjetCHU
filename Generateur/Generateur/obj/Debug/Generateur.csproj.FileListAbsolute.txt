@@ -7,3 +7,12 @@ C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\Generateur\Generate
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\Generateur\Generateur\bin\Debug\Generateur.pdb
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\Generateur\Generateur\obj\Debug\Generateur.exe
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\Generateur\Generateur\obj\Debug\Generateur.pdb
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe.config
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.exe
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.pdb
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.pdb
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csprojResolveAssemblyReference.cache
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Form1.resources
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Properties.Resources.resources
+C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csproj.GenerateResource.Cache

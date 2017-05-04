@@ -23,11 +23,14 @@ namespace Generateur
 
         }
 
-     
- 
 
         private void ports_click(object sender, EventArgs e)
         {
+             string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                selectionCOM.Items.Add(port);
+            }
 
         }
 
