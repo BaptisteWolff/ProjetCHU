@@ -47,6 +47,7 @@
             this.goTo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.portCOM = new System.Windows.Forms.Button();
+            this.readFileButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // itineraire
@@ -77,7 +78,7 @@
             // labelX
             // 
             this.labelX.AutoSize = true;
-            this.labelX.Location = new System.Drawing.Point(274, 11);
+            this.labelX.Location = new System.Drawing.Point(208, 12);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(17, 13);
             this.labelX.TabIndex = 3;
@@ -85,7 +86,7 @@
             // 
             // positionX
             // 
-            this.positionX.Location = new System.Drawing.Point(297, 9);
+            this.positionX.Location = new System.Drawing.Point(231, 10);
             this.positionX.Name = "positionX";
             this.positionX.Size = new System.Drawing.Size(100, 20);
             this.positionX.TabIndex = 4;
@@ -93,7 +94,7 @@
             // 
             // Xdec
             // 
-            this.Xdec.Location = new System.Drawing.Point(403, 9);
+            this.Xdec.Location = new System.Drawing.Point(337, 10);
             this.Xdec.Name = "Xdec";
             this.Xdec.Size = new System.Drawing.Size(23, 20);
             this.Xdec.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             // Xinc
             // 
-            this.Xinc.Location = new System.Drawing.Point(433, 9);
+            this.Xinc.Location = new System.Drawing.Point(367, 10);
             this.Xinc.Name = "Xinc";
             this.Xinc.Size = new System.Drawing.Size(21, 20);
             this.Xinc.TabIndex = 6;
@@ -113,7 +114,7 @@
             // 
             // Yinc
             // 
-            this.Yinc.Location = new System.Drawing.Point(433, 35);
+            this.Yinc.Location = new System.Drawing.Point(367, 36);
             this.Yinc.Name = "Yinc";
             this.Yinc.Size = new System.Drawing.Size(21, 20);
             this.Yinc.TabIndex = 10;
@@ -123,7 +124,7 @@
             // 
             // Ydec
             // 
-            this.Ydec.Location = new System.Drawing.Point(403, 35);
+            this.Ydec.Location = new System.Drawing.Point(337, 36);
             this.Ydec.Name = "Ydec";
             this.Ydec.Size = new System.Drawing.Size(23, 20);
             this.Ydec.TabIndex = 9;
@@ -133,7 +134,7 @@
             // 
             // positionY
             // 
-            this.positionY.Location = new System.Drawing.Point(297, 35);
+            this.positionY.Location = new System.Drawing.Point(231, 36);
             this.positionY.Name = "positionY";
             this.positionY.Size = new System.Drawing.Size(100, 20);
             this.positionY.TabIndex = 8;
@@ -142,7 +143,7 @@
             // labelY
             // 
             this.labelY.AutoSize = true;
-            this.labelY.Location = new System.Drawing.Point(274, 37);
+            this.labelY.Location = new System.Drawing.Point(208, 38);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(17, 13);
             this.labelY.TabIndex = 7;
@@ -150,7 +151,7 @@
             // 
             // Zinc
             // 
-            this.Zinc.Location = new System.Drawing.Point(433, 61);
+            this.Zinc.Location = new System.Drawing.Point(367, 62);
             this.Zinc.Name = "Zinc";
             this.Zinc.Size = new System.Drawing.Size(21, 20);
             this.Zinc.TabIndex = 14;
@@ -160,7 +161,7 @@
             // 
             // Zdec
             // 
-            this.Zdec.Location = new System.Drawing.Point(403, 61);
+            this.Zdec.Location = new System.Drawing.Point(337, 62);
             this.Zdec.Name = "Zdec";
             this.Zdec.Size = new System.Drawing.Size(23, 20);
             this.Zdec.TabIndex = 13;
@@ -170,7 +171,7 @@
             // 
             // positionZ
             // 
-            this.positionZ.Location = new System.Drawing.Point(297, 61);
+            this.positionZ.Location = new System.Drawing.Point(231, 62);
             this.positionZ.Name = "positionZ";
             this.positionZ.Size = new System.Drawing.Size(100, 20);
             this.positionZ.TabIndex = 12;
@@ -179,7 +180,7 @@
             // labelZ
             // 
             this.labelZ.AutoSize = true;
-            this.labelZ.Location = new System.Drawing.Point(274, 63);
+            this.labelZ.Location = new System.Drawing.Point(208, 64);
             this.labelZ.Name = "labelZ";
             this.labelZ.Size = new System.Drawing.Size(17, 13);
             this.labelZ.TabIndex = 11;
@@ -195,7 +196,7 @@
             // 
             // goTo
             // 
-            this.goTo.Location = new System.Drawing.Point(460, 27);
+            this.goTo.Location = new System.Drawing.Point(394, 28);
             this.goTo.Name = "goTo";
             this.goTo.Size = new System.Drawing.Size(43, 37);
             this.goTo.TabIndex = 17;
@@ -222,11 +223,22 @@
             this.portCOM.UseVisualStyleBackColor = true;
             this.portCOM.Click += new System.EventHandler(this.selectCOM);
             // 
+            // readFileButton
+            // 
+            this.readFileButton.Location = new System.Drawing.Point(658, 68);
+            this.readFileButton.Name = "readFileButton";
+            this.readFileButton.Size = new System.Drawing.Size(75, 23);
+            this.readFileButton.TabIndex = 20;
+            this.readFileButton.Text = "Read File";
+            this.readFileButton.UseVisualStyleBackColor = true;
+            this.readFileButton.Click += new System.EventHandler(this.readFileButton_click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 413);
+            this.Controls.Add(this.readFileButton);
             this.Controls.Add(this.portCOM);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.goTo);
@@ -274,6 +286,7 @@
         private System.Windows.Forms.Button goTo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button portCOM;
+        private System.Windows.Forms.Button readFileButton;
     }
 }
 

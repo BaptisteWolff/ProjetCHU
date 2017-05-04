@@ -20,6 +20,18 @@ namespace PilotageBras
             
         }
 
+        public void readFile(String fileName){
+
+          
+
+        }
+
+        public float[, ,] getPos()
+        {
+            float[, ,] trame = new float[0,0,0];
+            return trame;
+        }
+
         private void Xdec_Click(object sender, EventArgs e)
         {
             float temp = float.Parse(positionX.Text) - float.Parse(interval.Text);
@@ -74,6 +86,24 @@ namespace PilotageBras
             {
                 chooseCOM.Items.Add(port);
             }
+        }
+
+        private void readFileButton_click(object sender, EventArgs e)
+        {
+            String fileName = " ";
+
+            OpenFileDialog fbd = new OpenFileDialog();
+            //fbd.RootFolder = Environment.SpecialFolder.MyDocuments;
+            //fbd.Description = "";
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                fileName = fbd.FileName;
+
+            }
+
+            readFile(fileName);
+
+
         }
                 
     }
