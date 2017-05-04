@@ -1,0 +1,12 @@
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Form1.resources
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Properties.Resources.resources
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csproj.GenerateResource.Cache
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
+C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
+C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
+C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
