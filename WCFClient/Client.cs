@@ -46,7 +46,12 @@ namespace WCFClient
             {
                 response = false;
             }
-            listBox1.Items.Add(response);
+            if (response)
+            {
+                listBox1.Items.Add("Picoscope is ready");
+            } else {
+                listBox1.Items.Add("Unable to detect the PicoScope");
+            }
         }
 
         private void FormClient_FormClosed(object sender, FormClosedEventArgs e)

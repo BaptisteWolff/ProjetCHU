@@ -2054,12 +2054,20 @@ namespace PS3000ACSConsole
                 _handle = handle;
                 //this.Run();
                 //Imports.CloseUnit(handle);
+                picoReady = true;
             }
         }
 
         public void stopPico()
         {
             Imports.CloseUnit(_handle);
+        }
+
+        bool picoReady = false;
+
+        public bool getPicoStatus()
+        {
+            return picoReady;
         }
     }
 }

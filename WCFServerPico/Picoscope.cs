@@ -28,7 +28,7 @@ namespace WCFServer
 
             public bool Ping()
             {
-                return true;
+                return ihm.getPicoStatus();
             }
 
             public bool picoChangeMod()
@@ -64,6 +64,11 @@ namespace WCFServer
         */
         String[] _trackbarValues;
 
+        public bool getPicoStatus()
+        {
+            return _pico.getPicoStatus();
+        }
+
         public FormServeurPicoscope()
         {
             InitializeComponent();
@@ -83,7 +88,14 @@ namespace WCFServer
             labelChC.Text = _trackbarValues[trackBarChC.Value];
             labelChD.Text = _trackbarValues[trackBarChD.Value];
 
-            setPico();
+            if (_pico.getPicoStatus() == true)
+            {
+                setPico();
+            } else
+            {
+                buttonImediateBlock.Enabled = false;
+                listBox1.Items.Add("Unable to find the device");
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,46 +113,62 @@ namespace WCFServer
         /* Set PicoScope */
         private bool setPico()
         {
-            /* Set sample count */
-            int sampleCount = 0;
-            try
+            if (_pico.getPicoStatus() == true)
             {
-                sampleCount = 2 * Convert.ToInt32(textBoxSampleCount.Text);
+                /* Set sample count */
+                int sampleCount = 0;
+                try
+                {
+                    sampleCount = 2 * Convert.ToInt32(textBoxSampleCount.Text);
 
-            }
-            catch (Exception e)
-            {
-            }
-            if (sampleCount <= 0)
-            {
-                listBox1.Items.Add("Error : invalid number of samples");
-                return false;
-            }
+                }
+                catch (Exception e)
+                {
+                }
+                if (sampleCount <= 0)
+                {
+                    listBox1.Items.Add("Error : invalid number of samples");
+                    return false;
+                }
 
-            /* Set timebase */
-            string period = textBoxSetPeriod.Text;
-            uint timebase;
-            // T(ns) = (timebase-2) * 8 for timebase > 2
-            // T(ns) = 4 for timebase = 2
-            try
-            {
-                timebase = toTimeBase(Convert.ToUInt32(period));
-            }
-            catch (Exception f)
-            {
-                listBox1.Items.Add("Error : invalid period.");
-                return false;
-            }
-            // Display the information of the new timebase to the user
-            period = toPeriod(timebase).ToString();
-            textBoxSetPeriod.Text = period;
+                /* Set timebase */
+                string period = textBoxSetPeriod.Text;
+                uint timebase;
+                // T(ns) = (timebase-2) * 8 for timebase > 2
+                // T(ns) = 4 for timebase = 2
+                try
+                {
+                    timebase = toTimeBase(Convert.ToUInt32(period));
+                }
+                catch (Exception f)
+                {
+                    listBox1.Items.Add("Error : invalid period.");
+                    return false;
+                }
+                // Display the information of the new timebase to the user
+                period = toPeriod(timebase).ToString();
+                textBoxSetPeriod.Text = period;
 
-            /* Set filename */
-            string filename = textBoxFileName.Text;
+                /* Set filename */
+                string filename = textBoxFileName.Text;
 
-            _pico.setPico(timebase, sampleCount, filename, _range);
-            buttonSetPico.Enabled = false;
-            return true;
+                _pico.setPico(timebase, sampleCount, filename, _range);
+                buttonSetPico.Enabled = false;
+                return true;
+            } else {
+                // Trying to find the picoscope
+                _pico = new PS3000ACSConsole.PS3000ACSConsole();
+                if (_pico.getPicoStatus() == true)
+                {
+                    return setPico();
+                }
+                else
+                {
+                    buttonImediateBlock.Enabled = false;
+                    listBox1.Items.Add("Unable to find the device");
+                    return false;
+                }
+            }
         }
 
         public void setFileName(string fileName)
