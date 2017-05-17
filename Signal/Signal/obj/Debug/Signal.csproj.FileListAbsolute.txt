@@ -1,0 +1,8 @@
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.csprojResolveAssemblyReference.cache
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\bin\Debug\Signal.exe.config
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\bin\Debug\Signal.exe
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\bin\Debug\Signal.pdb
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Interop.MLApp.dll
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.csproj.ResolveComReference.cache
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.exe
+c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.pdb
