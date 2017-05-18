@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,26 +10,66 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 
+
+
 namespace PilotageBras
 {
     public partial class Form1 : Form
     {
+        SerialPort port;
+        float[] trame = new float[3];
+
         public Form1()
         {
             InitializeComponent();
-          
-            
+           // port.Open();
+              
         }
+     
 
         public void readFile(String fileName){
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(fileName);
 
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                while ((line = file.ReadLine()) != null)
+                {
+                 
+                    itineraire.Items.Add(line);
+
+                    var coord = line.Split('\t');
+
+                    int i = 0;
+                    for (i = 0; i < coord.Length; i++)
+                    {
+
+                        float taille = coord[i].Length;
+                        string trame = "254" + "1001" + taille.ToString() + coord[i];
+
+                        var posx= coord[i].Split(',');
+                        var posy= posx[2].Split(';');
+                        var posz= posy[1];
+
+                        trame[1]=float.Parse(posx[0]);
+
+                        port.WriteLine(trame);
+
+
+                    }
+
+
+                }
+            }
+
+     } 
           
 
-        }
+        
 
-        public float[, ,] getPos()
+        public float[] getPos()
         {
-            float[, ,] trame = new float[0,0,0];
+            
             return trame;
         }
 
@@ -76,7 +117,20 @@ namespace PilotageBras
 
         private void go_Click(object sender, EventArgs e)
         {
+            float x = float.Parse(positionX.Text);
+            //float tailleX = x.size(); ;
 
+            float y = float.Parse(positionY.Text);
+            //float tailleY = sizeof(y);
+
+            float z = float.Parse(positionZ.Text);
+            //float tailleZ = sizeof(z);
+
+
+            //float taille = tailleX + tailleY + tailleZ;
+
+            //string trame = "254" + "1001" + taille.ToString() + float.Parse(positionX.Text) + "," + float.Parse(positionY.Text) + ";" + float.Parse(positionZ.Text);
+            //port.WriteLine(trame);
         }
 
         private void selectCOM(object sender, EventArgs e)
@@ -87,6 +141,12 @@ namespace PilotageBras
                 chooseCOM.Items.Add(port);
             }
         }
+
+        private void choosenCom(object sender, EventArgs e)
+        {
+            port = new SerialPort(chooseCOM.SelectedIndex.ToString());
+
+         }
 
         private void readFileButton_click(object sender, EventArgs e)
         {
@@ -105,6 +165,8 @@ namespace PilotageBras
 
 
         }
+
+    
                 
     }
 }

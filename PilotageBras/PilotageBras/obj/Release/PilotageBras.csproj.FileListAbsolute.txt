@@ -1,0 +1,4 @@
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Release\PilotageBras.exe.config
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Release\PilotageBras.Form1.resources
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Release\PilotageBras.Properties.Resources.resources
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Release\PilotageBras.csproj.GenerateResource.Cache
