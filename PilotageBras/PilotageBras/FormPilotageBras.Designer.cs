@@ -1,6 +1,6 @@
 ﻿namespace PilotageBras
 {
-    partial class Form1
+    partial class PilotageBras
     {
         /// <summary>
         /// Required designer variable.
@@ -53,22 +53,18 @@
             // itineraire
             // 
             this.itineraire.FormattingEnabled = true;
-            this.itineraire.HorizontalScrollbar = true;
             this.itineraire.Location = new System.Drawing.Point(12, 99);
             this.itineraire.Name = "itineraire";
-            this.itineraire.ScrollAlwaysVisible = true;
             this.itineraire.Size = new System.Drawing.Size(721, 303);
             this.itineraire.TabIndex = 0;
             // 
             // chooseCOM
             // 
-            this.chooseCOM.BackColor = System.Drawing.Color.WhiteSmoke;
             this.chooseCOM.FormattingEnabled = true;
             this.chooseCOM.Location = new System.Drawing.Point(12, 36);
             this.chooseCOM.Name = "chooseCOM";
             this.chooseCOM.Size = new System.Drawing.Size(121, 21);
             this.chooseCOM.TabIndex = 1;
-            this.chooseCOM.SelectedIndexChanged += new System.EventHandler(this.choosenCom);
             // 
             // labelCOM
             // 
@@ -237,7 +233,7 @@
             this.readFileButton.UseVisualStyleBackColor = true;
             this.readFileButton.Click += new System.EventHandler(this.readFileButton_click);
             // 
-            // Form1
+            // PilotageBras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,8 +258,8 @@
             this.Controls.Add(this.labelCOM);
             this.Controls.Add(this.chooseCOM);
             this.Controls.Add(this.itineraire);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "PilotageBras";
+            this.Text = "Pilotage bras";
             this.ResumeLayout(false);
             this.PerformLayout();
 

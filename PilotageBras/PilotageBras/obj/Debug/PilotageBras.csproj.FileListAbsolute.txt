@@ -10,12 +10,21 @@ C:\Users\Pac\Desktop\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBra
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
 C:\Users\Pac\Desktop\Travail\Télécom\2016-2017\Projet info\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb
+C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Form1.resources
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Properties.Resources.resources
 C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csproj.GenerateResource.Cache
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
-C:\Users\Pac\git\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.PilotageBras.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb

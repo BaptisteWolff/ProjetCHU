@@ -4,17 +4,23 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Generateur
 {
-    public partial class Form1 : Form
+    public partial class Generateur : Form
     {
-        public Form1()
+        ServiceHost svh;
+
+        public Generateur()
         {
             InitializeComponent();
+            svh = new ServiceHost(new ServiceImplementation(this));
+            svh.AddServiceEndpoint(typeof(WCF.IServiceGenerateur), new NetTcpBinding(), "net.tcp://localhost:8000");
+            svh.Open();
         }
 
   
@@ -43,10 +49,26 @@ namespace Generateur
         {
 
         }
+    }
 
-        private void label1_Click(object sender, EventArgs e)
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    class ServiceImplementation : WCF.IServiceGenerateur
+    {
+        Generateur ihm;
+        public ServiceImplementation(Generateur f)
         {
+            ihm = f;
+        }
 
+        public bool getStatus()
+        {
+            //return ihm. ... ;
+            return true;
+        }
+
+        public void pulse()
+        {
+            //ihm.  ... ;
         }
     }
 }

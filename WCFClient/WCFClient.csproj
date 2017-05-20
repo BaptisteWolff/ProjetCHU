@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Generateur\Generateur\IServiceGenerateur.cs">
+      <Link>IServiceGenerateur.cs</Link>
+    </Compile>
+    <Compile Include="..\PilotageBras\PilotageBras\IServicePilotageBras.cs">
+      <Link>IServicePilotageBras.cs</Link>
+    </Compile>
     <Compile Include="..\WCFServerPico\IServicePicoscope.cs">
       <Link>IServicePicoscope.cs</Link>
     </Compile>

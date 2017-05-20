@@ -26,7 +26,7 @@ namespace WCFServer
                 ihm = f;
             }
 
-            public bool Ping()
+            public bool getStatus()
             {
                 return ihm.getPicoStatus();
             }
@@ -124,6 +124,7 @@ namespace WCFServer
                 }
                 catch (Exception e)
                 {
+                    listBox1.Items.Add("Error : invalid number of samples");
                 }
                 if (sampleCount <= 0)
                 {
@@ -301,7 +302,7 @@ namespace WCFServer
 
         /* Set server mod : use it to avoid changes to the settings
          * mod = True -> automatic mod : the client is giving the orders
-         * mod = False -> manual mod : used for setting the parameters
+         * mod = False -> manual mod : use this for setting the parameters
          * */
         private void setServerMod(bool mod)
         {

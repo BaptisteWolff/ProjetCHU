@@ -12,7 +12,7 @@ namespace WCF
     public interface IServicePicoscope
     {
         [OperationContract]
-        bool Ping();
+        bool getStatus();
         [OperationContract]
         bool picoChangeMod();
         [OperationContract]
@@ -20,5 +20,4 @@ namespace WCF
         [OperationContract]
         void collectBlock();
     }
-
 }

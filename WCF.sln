@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServerPico", "WCFServerP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFClient", "WCFClient\WCFClient.csproj", "{20D557A6-E779-403A-8EA6-EEF965EABC9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generateur", "Generateur\Generateur\Generateur.csproj", "{1A295488-0431-43C9-96D4-5F7DC3804857}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PilotageBras", "PilotageBras\PilotageBras\PilotageBras.csproj", "{BD7E93FB-3089-4C6B-A7AB-92D9794055BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{20D557A6-E779-403A-8EA6-EEF965EABC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D557A6-E779-403A-8EA6-EEF965EABC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D557A6-E779-403A-8EA6-EEF965EABC9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A295488-0431-43C9-96D4-5F7DC3804857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A295488-0431-43C9-96D4-5F7DC3804857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A295488-0431-43C9-96D4-5F7DC3804857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A295488-0431-43C9-96D4-5F7DC3804857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD7E93FB-3089-4C6B-A7AB-92D9794055BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7E93FB-3089-4C6B-A7AB-92D9794055BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7E93FB-3089-4C6B-A7AB-92D9794055BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7E93FB-3089-4C6B-A7AB-92D9794055BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

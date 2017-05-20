@@ -16,3 +16,12 @@ C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csprojReso
 C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Form1.resources
 C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Properties.Resources.resources
 C:\Users\Pac\git\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe.config
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Generateur.resources

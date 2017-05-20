@@ -1,6 +1,6 @@
 ﻿namespace Generateur
 {
-    partial class Form1
+    partial class Generateur
     {
         /// <summary>
         /// Required designer variable.
@@ -49,10 +49,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(53, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "COM:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "label1";
             // 
             // LockPorts
             // 
@@ -92,7 +91,7 @@
             this.StatutsBox.TabIndex = 5;
             this.StatutsBox.Text = "";
             // 
-            // Form1
+            // Generateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,8 +102,8 @@
             this.Controls.Add(this.LockPorts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.selectionCOM);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Generateur";
+            this.Text = "Generateur";
             this.ResumeLayout(false);
             this.PerformLayout();
 

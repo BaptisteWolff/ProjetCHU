@@ -121,7 +121,7 @@
             this.textBoxSampleCount.Name = "textBoxSampleCount";
             this.textBoxSampleCount.Size = new System.Drawing.Size(100, 20);
             this.textBoxSampleCount.TabIndex = 8;
-            this.textBoxSampleCount.Text = "512";
+            this.textBoxSampleCount.Text = "10000";
             this.textBoxSampleCount.TextChanged += new System.EventHandler(this.textBoxSampleCount_TextChanged);
             // 
             // label1
@@ -148,7 +148,7 @@
             this.textBoxSetPeriod.Name = "textBoxSetPeriod";
             this.textBoxSetPeriod.Size = new System.Drawing.Size(100, 20);
             this.textBoxSetPeriod.TabIndex = 5;
-            this.textBoxSetPeriod.Text = "4";
+            this.textBoxSetPeriod.Text = "1000";
             this.textBoxSetPeriod.TextChanged += new System.EventHandler(this.textBoxSetPeriod_TextChanged);
             // 
             // buttonSetPico
@@ -305,7 +305,7 @@
             this.trackBarChA.Value = 7;
             this.trackBarChA.Scroll += new System.EventHandler(this.trackBarChA_Scroll);
             // 
-            // FormServeur
+            // FormServeurPicoscope
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +313,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBox1);
-            this.Name = "FormServeur";
+            this.Name = "FormServeurPicoscope";
             this.Text = "ServeurPico";
             this.Load += new System.EventHandler(this.FormServeur_Load);
             this.groupBox1.ResumeLayout(false);
