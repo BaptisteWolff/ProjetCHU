@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Signal
 {
     class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Signal());
+        }
+        /*static void Main(string[] args)
+        {
+
+            
             // To get the value from the signal
 
             // Create the MATLAB instance 
@@ -21,7 +33,7 @@ namespace Signal
             // Define the output 
             object result = null;
             // Call the funtion with the path
-            string path = "Dist 5cm Puiss 50%.csv";
+            string path = "Dist_5cm_Puiss_50%.csv";
             matlab.Feval("valeur_signal", 1, out result,path);
 
             // Display result
@@ -31,7 +43,7 @@ namespace Signal
             //Console.ReadLine();
 
             // To map
- 
+            
             
             /*
             MLApp.MLApp matlab = new MLApp.MLApp()
@@ -54,6 +66,6 @@ namespace Signal
             Console.WriteLine(res[0]); // max of values
             Console.WriteLine(res[1]); // min of values
             */
-        }
+        //}
     }
 }

@@ -6,3 +6,23 @@ c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\I
 c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.csproj.ResolveComReference.cache
 c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.exe
 c:\users\suzanne\documents\visual studio 2017\Projects\Signal\Signal\obj\Debug\Signal.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.exe.config
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Interop.MLApp.dll
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csproj.ResolveComReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.Signal.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.exe.config
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Interop.MLApp.dll
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csproj.ResolveComReference.cache
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\bin\Debug\Signal.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.Signal.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Signal\Signal\obj\Debug\Signal.csproj.GenerateResource.Cache
