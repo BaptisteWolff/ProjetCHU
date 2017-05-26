@@ -60,7 +60,7 @@ z2c=floor(median(zc));
 z2d=floor(median(zd));
 z2=floor(median([z2b z2c z2d]));
 
-T=2*(a2(z2)-a2(z1))
+T=2*(a2(z2)-a2(z1));
 f=1/T;
 
 %% Phase
@@ -124,6 +124,11 @@ A=max([Ax Ay Az]);
 %     legend('Dérivée du champ z')
 %     xlabel('temps µs');
 % end
+
+%% Passage mV à T/us
+Ax=Ax*1.4;
+Ay=Ay*1.4;
+Az=Az*1.4;
 
 %% Integration
 % fonction integ

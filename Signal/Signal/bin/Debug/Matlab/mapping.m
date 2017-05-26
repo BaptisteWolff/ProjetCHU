@@ -9,7 +9,7 @@ scatter(:,3)=position(2);
 scatter(:,4)=position(3);
 
 [maxi,im]=max(values);
-[~,im2]=find(values==maxi/2);
+[~,im2]=min(values-maxi/2);
 [~,imi2]=find((values>maxi/2)&(value<maxi));
 [mini,~]=min(values);
 
