@@ -20,8 +20,8 @@ namespace Signal
         // Create the MATLAB instance 
         MLApp.MLApp matlab = new MLApp.MLApp();
 
-        List<float[]> pos_ = new List<float[]>();
-        List<float[]> results_ = new List<float[]>();
+        List<double[]> pos_ = new List<double[]>();
+        List<double> results_ = new List<double>();
         String path1_ = "";
 
         public Signal()
@@ -45,23 +45,15 @@ namespace Signal
 
             // Define the output 
             object result = null;
-
-            /*try
-            {
-            }
-            catch (Exception f)
-            {
-
-            }*/
-                // Call the funtion with the path
-                matlab.Feval("valeur_signal", 1, out result, path);
+            // Call the funtion with the path
+            matlab.Feval("valeur_signal", 1, out result, path);
 
             // Display result
             object[] res = result as object[];
             // res[0] is the value
 
-            results_.Add(new float[] { (float)res[0] });
-            listBox1.Items.Add((float)res[0]);
+            results_.Add((double)res[0]);
+            //listBox1.Items.Add((double)res[0]);
         }
 
         public void clearResults()
@@ -87,7 +79,7 @@ namespace Signal
                 bool valid = false;
                 try
                 {
-                    pos_.Add(new float[] { float.Parse(textBox_posX.Text), float.Parse(textBox_posY.Text), float.Parse(textBox_posZ.Text) });
+                    pos_.Add(new double[] { double.Parse(textBox_posX.Text), double.Parse(textBox_posY.Text), double.Parse(textBox_posZ.Text) });
                     valid = true;
                 }
                 catch (Exception f)
@@ -98,6 +90,7 @@ namespace Signal
                 if (valid)
                 {
                     valeurSignal(LabelFileIn.Text);
+                    listBox1.Items.Add("result = " + results_[results_.Count - 1].ToString());
                 }
             }
 
@@ -109,7 +102,7 @@ namespace Signal
 
         public void addPos(float x, float y, float z)
         {
-            pos_.Add(new float[] { x, y, z });
+            pos_.Add(new double[] { x, y, z });
         }
 
         public void setPath(String path)
@@ -124,7 +117,8 @@ namespace Signal
             //fbd.Description = "";
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                labelPath.Text = fbd.SelectedPath;
+                path1_ = fbd.SelectedPath;
+                labelPath.Text = path1_;
             }
         }
 

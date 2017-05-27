@@ -10,7 +10,7 @@ scatter(:,4)=position(3);
 
 [maxi,im]=max(values);
 [~,im2]=min(values-maxi/2);
-[~,imi2]=find((values>maxi/2)&(value<maxi));
+[~,imi2]=find((values>maxi/2)&(values<maxi));
 [mini,~]=min(values);
 
 figure(1)
