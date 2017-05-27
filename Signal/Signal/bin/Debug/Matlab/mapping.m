@@ -1,24 +1,26 @@
-function [maxi,mini]=mapping(values,position,path)
+function [maxi,mini]=mapping(values,positionX,positionY,positionZ,path)
 % values tableau des valeurs calculées avec la carte
 % position position x,y,z
 
 scatter=zeros(length(values),4);
 scatter(:,1)=values;
-scatter(:,2)=position(1);
-scatter(:,3)=position(2);
-scatter(:,4)=position(3);
+scatter(:,2)=positionX;
+scatter(:,3)=positionY;
+scatter(:,4)=positionZ;
 
 [maxi,im]=max(values);
 [~,im2]=min(values-maxi/2);
 [~,imi2]=find((values>maxi/2)&(values<maxi));
 [mini,~]=min(values);
 
+size = 20;
+
 figure(1)
-scatter3(position(im),1,'magenta');
+scatter3(positionX(im),positionY(im),positionZ(im),size,'magenta');
 hold on;
-scatter3(position(imi2),1,'red');
+scatter3(positionX(imi2),positionY(imi2),positionZ(imi2),size,'red');
 hold on;
-scatter3(position(im2),1,'yellow');
+scatter3(positionX(im2),positionY(im2),positionZ(im2),size,'yellow');
 
 s=strcat(path,'.png');
 saveas(gcf,s);

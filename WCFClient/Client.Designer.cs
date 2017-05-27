@@ -47,7 +47,6 @@
             this.labelPilotageBrasReadFile = new System.Windows.Forms.Label();
             this.buttonPilotageBrasReadFile = new System.Windows.Forms.Button();
             this.button_stop = new System.Windows.Forms.Button();
-            this.button_pause = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox_PilotageBras.SuspendLayout();
             this.SuspendLayout();
@@ -134,7 +133,7 @@
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(87, 344);
+            this.button_start.Location = new System.Drawing.Point(148, 344);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(137, 23);
             this.button_start.TabIndex = 9;
@@ -233,28 +232,18 @@
             // 
             // button_stop
             // 
-            this.button_stop.Location = new System.Drawing.Point(381, 344);
+            this.button_stop.Location = new System.Drawing.Point(326, 344);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(151, 23);
             this.button_stop.TabIndex = 11;
             this.button_stop.Text = "Stop";
             this.button_stop.UseVisualStyleBackColor = true;
             // 
-            // button_pause
-            // 
-            this.button_pause.Location = new System.Drawing.Point(230, 344);
-            this.button_pause.Name = "button_pause";
-            this.button_pause.Size = new System.Drawing.Size(145, 23);
-            this.button_pause.TabIndex = 12;
-            this.button_pause.Text = "Pause";
-            this.button_pause.UseVisualStyleBackColor = true;
-            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 524);
-            this.Controls.Add(this.button_pause);
             this.Controls.Add(this.button_stop);
             this.Controls.Add(this.groupBox_PilotageBras);
             this.Controls.Add(this.button_start);
@@ -288,7 +277,6 @@
         private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.GroupBox groupBox_PilotageBras;
         private System.Windows.Forms.Button button_stop;
-        private System.Windows.Forms.Button button_pause;
         private System.Windows.Forms.Label labelPilotageBrasReadFile;
         private System.Windows.Forms.Button buttonPilotageBrasReadFile;
         private System.Windows.Forms.Label labelPilotageBrasNbPos;

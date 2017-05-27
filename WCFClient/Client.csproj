@@ -64,6 +64,9 @@
     <Compile Include="..\PilotageBras\PilotageBras\IServicePilotageBras.cs">
       <Link>IServicePilotageBras.cs</Link>
     </Compile>
+    <Compile Include="..\Signal\Signal\IServiceSignal.cs">
+      <Link>IServiceSignal.cs</Link>
+    </Compile>
     <Compile Include="..\WCFServerPico\IServicePicoscope.cs">
       <Link>IServicePicoscope.cs</Link>
     </Compile>

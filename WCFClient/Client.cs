@@ -30,6 +30,10 @@ namespace WCFClient
         WCF.IServicePilotageBras pilotageBras;
         float x, y, z;
 
+        /* Signal */
+        ChannelFactory<WCF.IServiceSignal> signalChannel;
+        WCF.IServiceSignal signal;
+
         public FormClient()
         {
             /* Picoscope */
@@ -53,10 +57,13 @@ namespace WCFClient
             y = 0;
             z = 0;
 
+            /* Signal */
+            signalChannel = new ChannelFactory<WCF.IServiceSignal>(new NetTcpBinding(), "net.tcp://localhost:8003");
+            signal = signalChannel.CreateChannel();
+
             /* Client */
             listBox1.Items.Add("Please enter a storage location before capturing any Data");
             button_stop.Enabled = false;
-            button_pause.Enabled = false;
         }
 
         private void buttonPicoPing_Click(object sender, EventArgs e)
@@ -94,6 +101,8 @@ namespace WCFClient
                 buttonPicoLock.Enabled = true;
                 labelPicoFolder.Text = _folderPath;
                 changeSavedFileName();
+
+                signal.setPath(_folderPath);
             }
         }
 
@@ -209,43 +218,12 @@ namespace WCFClient
             }
         }
 
-        private void button_start_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Clear();
-            listBox1.Items.Add("Checking PicoScope");
-            if (pico.getStatus() && setPico())
-            {
-                listBox1.Items.Add("Ready");
-            } else
-            {
-                listBox1.Items.Add("! Not Ready");
-            }
-            listBox1.Items.Add("Checking Generateur");
-            if (generateur.getStatus())
-            {
-                listBox1.Items.Add("Ready");
-            }
-            else
-            {
-                listBox1.Items.Add("! Not Ready");
-            }
-            listBox1.Items.Add("Checking PilotageBras");
-            if (pilotageBras.getNbPos() > 0)
-            {
-                listBox1.Items.Add("Ready");
-            }
-            else
-            {
-                listBox1.Items.Add("! Not Ready");
-            }
-        }
-
         private bool setPico()
         {
             if (!picoscopeModClient_)
             {
                 if (pico.picoChangeMod())
-                {                    
+                {
                     picoscopeModClient_ = true;
                     buttonPicoCaptureBlock.Enabled = false;
                     buttonPicoLock.Enabled = true;
@@ -263,6 +241,76 @@ namespace WCFClient
                 return true;
             }
         }
+
+        private void button_start_Click(object sender, EventArgs e)
+        {
+            bool ready = true;
+            listBox1.Items.Clear();
+            listBox1.Items.Add("Checking PicoScope");
+            if (pico.getStatus() && setPico())
+            {
+                listBox1.Items.Add("Ready");
+            } else
+            {
+                listBox1.Items.Add("! Not Ready");
+                ready = false;
+            }
+            listBox1.Items.Add("Checking Generateur");
+            if (generateur.getStatus())
+            {
+                listBox1.Items.Add("Ready");
+            }
+            else
+            {
+                listBox1.Items.Add("! Not Ready");
+                ready = false;
+            }
+            listBox1.Items.Add("Checking PilotageBras");
+            if (pilotageBras.getNbPos() > 0)
+            {
+                listBox1.Items.Add("Ready");
+            }
+            else
+            {
+                listBox1.Items.Add("! Not Ready");
+                ready = false;
+            }
+            if (_folderPath == null || _folderPath == "")
+            {
+                listBox1.Items.Add("Please select a path for the saving");
+                ready = false;
+            }
+
+            if (ready)
+            {
+                routine();
+            }
+        }
+
+        private void routine()
+        {
+            // Initialise to the first position (entered by the user)
+            int nPos = -1;
+            try
+            {
+                nPos = Convert.ToInt32(textBoxPilotageBrasNPos.Text) - 1;
+            }
+            catch (Exception f)
+            {
+                nPos = 1;
+                textBoxPilotageBrasNPos.Text = "1";
+            }
+            if (!setPos(nPos))
+            {
+                nPos = 1;
+                textBoxPilotageBrasNPos.Text = "1";
+            }
+            changeSavedFileName();
+            pilotageBras.setPos(nPos);
+
+
+        }
+        
 
         private void FormClient_Load(object sender, EventArgs e)
         {

@@ -20,7 +20,9 @@ namespace Signal
         // Create the MATLAB instance 
         MLApp.MLApp matlab = new MLApp.MLApp();
 
-        List<double[]> pos_ = new List<double[]>();
+        List<double> posX_ = new List<double>();
+        List<double> posY_ = new List<double>();
+        List<double> posZ_ = new List<double>();
         List<double> results_ = new List<double>();
         String path1_ = "";
 
@@ -59,7 +61,9 @@ namespace Signal
         public void clearResults()
         {
             results_.Clear();
-            pos_.Clear();
+            posX_.Clear();
+            posY_.Clear();
+            posZ_.Clear();
         }
 
         private void buttonFileIn_Click(object sender, EventArgs e)
@@ -79,7 +83,9 @@ namespace Signal
                 bool valid = false;
                 try
                 {
-                    pos_.Add(new double[] { double.Parse(textBox_posX.Text), double.Parse(textBox_posY.Text), double.Parse(textBox_posZ.Text) });
+                    posX_.Add(double.Parse(textBox_posX.Text));
+                    posY_.Add(double.Parse(textBox_posY.Text));
+                    posZ_.Add(double.Parse(textBox_posZ.Text));
                     valid = true;
                 }
                 catch (Exception f)
@@ -102,12 +108,15 @@ namespace Signal
 
         public void addPos(float x, float y, float z)
         {
-            pos_.Add(new double[] { x, y, z });
+            posX_.Add(x);
+            posY_.Add(y);
+            posZ_.Add(z);
         }
 
         public void setPath(String path)
         {
             path1_ = path;
+            labelPath.Text = path1_;
         }
 
         private void buttonFileOut_Click_1(object sender, EventArgs e)
@@ -126,9 +135,16 @@ namespace Signal
         {
             // Define the output 
             object result = null;
+            double[] results = results_.ToArray();
+            double[] posX = posX_.ToArray();
+            double[] posY = posY_.ToArray();
+            double[] posZ = posZ_.ToArray();
+
+            listBox1.Items.Add(posX.ToString());
 
             // Call the funtion with the path
-            matlab.Feval("mapping", 1, out result, results_, pos_, path1_);
+            String path = path1_ + "\\" + textBox_savedFile.Text;
+            matlab.Feval("mapping", 2, out result, results, posX, posY, posZ, path);
 
             // Display result
             object[] res = result as object[];
@@ -136,6 +152,7 @@ namespace Signal
 
             //result_ = (float)res[0];
             listBox1.Items.Add(res[0]);
+            listBox1.Items.Add(res[1]);
         }
 
         private void button_clearResults_Click(object sender, EventArgs e)
@@ -144,9 +161,9 @@ namespace Signal
             listBox1.Items.Add("sucessfully cleared all results");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonMapping_Click(object sender, EventArgs e)
         {
-            if (pos_.Count == 0)
+            if (results_.Count == 0)
             {
                 listBox1.Items.Add("No results to save");
             }

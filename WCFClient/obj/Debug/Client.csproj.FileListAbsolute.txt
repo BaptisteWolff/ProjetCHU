@@ -1,0 +1,16 @@
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\bin\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\bin\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\Client.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\WCFClient.FormClient.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\Client.csproj.GenerateResource.Cache
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\bin\Debug\TestWCFClient.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\bin\Debug\TestWCFClient.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\Client.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\WCFClient.FormClient.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\TestWCFClient.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFClient\obj\Debug\Client.csproj.GenerateResource.Cache
