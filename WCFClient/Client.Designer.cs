@@ -133,7 +133,7 @@
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(148, 344);
+            this.button_start.Location = new System.Drawing.Point(168, 351);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(137, 23);
             this.button_start.TabIndex = 9;
@@ -232,12 +232,13 @@
             // 
             // button_stop
             // 
-            this.button_stop.Location = new System.Drawing.Point(326, 344);
+            this.button_stop.Location = new System.Drawing.Point(337, 351);
             this.button_stop.Name = "button_stop";
-            this.button_stop.Size = new System.Drawing.Size(151, 23);
+            this.button_stop.Size = new System.Drawing.Size(137, 23);
             this.button_stop.TabIndex = 11;
             this.button_stop.Text = "Stop";
             this.button_stop.UseVisualStyleBackColor = true;
+            this.button_stop.Click += new System.EventHandler(this.button_stop_Click);
             // 
             // FormClient
             // 
@@ -276,7 +277,6 @@
         private System.Windows.Forms.Label labelPicoFolder;
         private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.GroupBox groupBox_PilotageBras;
-        private System.Windows.Forms.Button button_stop;
         private System.Windows.Forms.Label labelPilotageBrasReadFile;
         private System.Windows.Forms.Button buttonPilotageBrasReadFile;
         private System.Windows.Forms.Label labelPilotageBrasNbPos;
@@ -285,6 +285,7 @@
         private System.Windows.Forms.Label labelPilotageBrasPosZ;
         private System.Windows.Forms.Label labelPilotageBrasPosX;
         private System.Windows.Forms.Button buttonPilotageBrasGo;
+        private System.Windows.Forms.Button button_stop;
     }
 }
 

@@ -16,5 +16,7 @@ namespace WCF
         void setPath(string path);
         [OperationContract]
         void clearResults();
+        [OperationContract]
+        void mapping();
     }
 }

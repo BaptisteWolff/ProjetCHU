@@ -44,18 +44,34 @@ namespace Signal
 
         public void valeurSignal(string path)
         {
-
+            bool validResult;
             // Define the output 
             object result = null;
             // Call the funtion with the path
-            matlab.Feval("valeur_signal", 1, out result, path);
+            try
+            {
+                matlab.Feval("valeur_signal", 1, out result, path);
+                validResult = true;
+            }
+            catch
+            {
+                validResult = false;
+            }
 
-            // Display result
-            object[] res = result as object[];
-            // res[0] is the value
+            if (validResult)
+            {
+                // Display result
+                object[] res = result as object[];
+                // res[0] is the value
 
-            results_.Add((double)res[0]);
-            //listBox1.Items.Add((double)res[0]);
+                results_.Add((double)res[0]);
+                //listBox1.Items.Add((double)res[0]);
+            }
+            else
+            {
+                results_.Add(0);
+                listBox1.Items.Add("valeur_signal error on file " + path);
+            }
         }
 
         public void clearResults()
@@ -208,6 +224,11 @@ namespace Signal
         public void clearResults()
         {
             ihm.clearResults();
+        }
+
+        public void mapping()
+        {
+            ihm.mapping();
         }
     }
 }

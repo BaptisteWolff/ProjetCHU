@@ -9,17 +9,19 @@ using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Net;
+using System.Threading;
 
 namespace WCFClient
 {
     public partial class FormClient : Form
     {
-        string _folderPath = "";
+        string folderPath_ = "";
 
         /* Picoscope */
         ChannelFactory<WCF.IServicePicoscope> picoChannel;
         WCF.IServicePicoscope pico;
         bool picoscopeModClient_ = false;
+        string filePath_ = "";
 
         /* Generateur */
         ChannelFactory<WCF.IServiceGenerateur> generateurChannel;
@@ -28,11 +30,19 @@ namespace WCFClient
         /* Pilotage bras */
         ChannelFactory<WCF.IServicePilotageBras> pilotageBrasChannel;
         WCF.IServicePilotageBras pilotageBras;
-        float x, y, z;
+        float x_, y_, z_;
+        int nPos_, nbPos_;
 
         /* Signal */
         ChannelFactory<WCF.IServiceSignal> signalChannel;
         WCF.IServiceSignal signal;
+
+        /* Client */
+        PicoscopeThread picoscopeThread_;
+        // This delegate enables asynchronous calls for setting
+        // the text property on a TextBox control.
+        delegate void addListBoxCallback(string text);
+        RoutineThread routineThread_;
 
         public FormClient()
         {
@@ -42,8 +52,8 @@ namespace WCFClient
             pico = picoChannel.CreateChannel();
 
             buttonPicoCaptureBlock.Enabled = false;
-            labelPicoFolder.Text = _folderPath;
-            buttonPicoLock.Enabled = false;
+            labelPicoFolder.Text = folderPath_;
+            buttonPicoLock.Enabled = false;            
 
             /* Generateur */
             generateurChannel = new ChannelFactory<WCF.IServiceGenerateur>(new NetTcpBinding(), "net.tcp://localhost:8000");
@@ -53,9 +63,9 @@ namespace WCFClient
             pilotageBrasChannel = new ChannelFactory<WCF.IServicePilotageBras>(new NetTcpBinding(), "net.tcp://localhost:8001");
             pilotageBras = pilotageBrasChannel.CreateChannel();
 
-            x = 0;
-            y = 0;
-            z = 0;
+            x_ = 0;
+            y_ = 0;
+            z_ = 0;
 
             /* Signal */
             signalChannel = new ChannelFactory<WCF.IServiceSignal>(new NetTcpBinding(), "net.tcp://localhost:8003");
@@ -63,6 +73,8 @@ namespace WCFClient
 
             /* Client */
             listBox1.Items.Add("Please enter a storage location before capturing any Data");
+            picoscopeThread_ = new PicoscopeThread(this);
+            routineThread_ = new RoutineThread(this);
             button_stop.Enabled = false;
         }
 
@@ -72,14 +84,17 @@ namespace WCFClient
             try
             {
                 response = pico.getStatus();
-            } catch
+            }
+            catch
             {
                 response = false;
             }
             if (response)
             {
                 listBox1.Items.Add("Picoscope is ready");
-            } else {
+            }
+            else
+            {
                 listBox1.Items.Add("Unable to detect the PicoScope");
             }
         }
@@ -97,12 +112,12 @@ namespace WCFClient
             //fbd.Description = "";
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                _folderPath = fbd.SelectedPath;
+                folderPath_ = fbd.SelectedPath;
                 buttonPicoLock.Enabled = true;
-                labelPicoFolder.Text = _folderPath;
+                labelPicoFolder.Text = folderPath_;
                 changeSavedFileName();
 
-                signal.setPath(_folderPath);
+                signal.setPath(folderPath_);
             }
         }
 
@@ -112,25 +127,31 @@ namespace WCFClient
             listBox1.Items.Add("Data saved");
         }
 
+        public void captureBlock()
+        {
+            pico.collectBlock();
+        }
+
         private void changeSavedFileName()
         {
             if (pilotageBras.getNbPos() > 0)
             {
-                x = pilotageBras.getXPos();
-                y = pilotageBras.getYPos();
-                z = pilotageBras.getZPos();
+                x_ = pilotageBras.getXPos();
+                y_ = pilotageBras.getYPos();
+                z_ = pilotageBras.getZPos();
             }
             else
             {
-                x = 0;
-                y = 0;
-                z = 0;
+                x_ = 0;
+                y_ = 0;
+                z_ = 0;
             }
-            if (!System.IO.Directory.Exists(_folderPath + "\\" + z.ToString()))
+            if (!System.IO.Directory.Exists(folderPath_ + "\\" + z_.ToString()))
             {
-                System.IO.Directory.CreateDirectory(_folderPath + "\\" + z.ToString());
+                System.IO.Directory.CreateDirectory(folderPath_ + "\\" + z_.ToString());
             }
-            pico.setFileName(_folderPath + "\\" + z.ToString() + "\\" + x.ToString() + "_" + y.ToString() + ".csv");
+            filePath_ = folderPath_ + "\\" + z_.ToString() + "\\" + x_.ToString() + "_" + y_.ToString() + ".csv";
+            pico.setFileName(filePath_);
         }
 
         private void buttonPicoSetMod_Click_1(object sender, EventArgs e)
@@ -218,6 +239,19 @@ namespace WCFClient
             }
         }
 
+        private bool setPosThreadSafe(int nPos)
+        {
+            if (pilotageBras.getNbPos() > nPos && nPos >= 0)
+            {
+                pilotageBras.setPos(nPos);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private bool setPico()
         {
             if (!picoscopeModClient_)
@@ -275,42 +309,118 @@ namespace WCFClient
                 listBox1.Items.Add("! Not Ready");
                 ready = false;
             }
-            if (_folderPath == null || _folderPath == "")
+            if (folderPath_ == null || folderPath_ == "")
             {
-                listBox1.Items.Add("Please select a path for the saving");
+                listBox1.Items.Add("Please select the storage location");
                 ready = false;
             }
 
             if (ready)
             {
+                button_start.Enabled = false;
+                button_stop.Enabled = true;
                 routine();
             }
         }
 
         private void routine()
         {
+            listBox1.Items.Clear();
+            listBox1.Items.Add("Starting...");
             // Initialise to the first position (entered by the user)
-            int nPos = -1;
+            nPos_ = -1;
             try
             {
-                nPos = Convert.ToInt32(textBoxPilotageBrasNPos.Text) - 1;
+                nPos_ = Convert.ToInt32(textBoxPilotageBrasNPos.Text) - 1;
             }
             catch (Exception f)
             {
-                nPos = 1;
+                nPos_ = 1;
                 textBoxPilotageBrasNPos.Text = "1";
             }
-            if (!setPos(nPos))
+            if (!setPos(nPos_))
             {
-                nPos = 1;
+                nPos_ = 1;
                 textBoxPilotageBrasNPos.Text = "1";
             }
             changeSavedFileName();
-            pilotageBras.setPos(nPos);
+            pilotageBras.setPos(nPos_);
+            nbPos_ = pilotageBras.getNbPos();
 
-
+            // Main loop
+            routineThread_.setStop(false);
+            Thread t = new Thread(new ThreadStart(routineThread_.ThreadLoop));
+            t.Start();
         }
-        
+
+        public void routineLoop()
+        {            
+            // PilotageBras
+            if (!setPosThreadSafe(nPos_))
+            {
+                routineThread_.setStop(true);
+                addListBoxThreadSafe("End ...");
+            }
+            else
+            {
+                addListBoxThreadSafe((nPos_ + 1) + "/" + nbPos_);
+                // Picoscope               
+                changeSavedFileName();
+                picoscopeThread_.setEnd(false);
+                Thread t = new Thread(new ThreadStart(picoscopeThread_.ThreadLoop));
+                t.Start();
+
+                // Générateur
+                while (!picoscopeThread_.getEnd())
+                {
+                    // send pulse every 10 ms
+                    generateur.pulse();
+                    Thread.Sleep(10);
+                }
+
+                // Signal
+                signal.addPos(x_, y_, z_);
+                signal.valeurSignal(filePath_);
+
+                nPos_++;
+            }
+        }
+
+        private void button_stop_Click(object sender, EventArgs e)
+        {
+            routineThread_.setStop(true);
+            listBox1.Items.Add("Order received : stopping at the end of this loop");
+            while(routineThread_.getStop())
+            {
+                Thread.Sleep(100);
+            }
+            listBox1.Items.Add("Stopped by the user.");
+            button_stop.Enabled = false;
+            button_start.Enabled = true;
+            setPos(nPos_);
+        }
+
+        public void addListBoxThreadSafe(string text)
+        {
+            addListBox(text);
+        }
+
+
+        private void addListBox(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.listBox1.InvokeRequired)
+            {
+                addListBoxCallback d = new addListBoxCallback(addListBox);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                listBox1.Items.Add(text);
+            }
+        }
 
         private void FormClient_Load(object sender, EventArgs e)
         {
