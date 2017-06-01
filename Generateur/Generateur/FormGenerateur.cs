@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.IO.Ports;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,7 @@ namespace Generateur
     public partial class Generateur : Form
     {
         ServiceHost svh;
+        SerialPort port_;
 
         public Generateur()
         {
@@ -24,11 +27,6 @@ namespace Generateur
         }
 
   
-        private void choiceCOM(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void ports_click(object sender, EventArgs e)
         {
@@ -42,12 +40,45 @@ namespace Generateur
 
         private void pulse_click(object sender, EventArgs e)
         {
+            string temp = "FE0303010020FF" + "1100";
+            float taille = temp.Length;
+            string trame = temp + taille.ToString();
+            if (port_ == null)
+            {
+                StatutsBox.AppendText("Pulse failed \n");
+                
+            }
+            else
+            {
+                port_.WriteLine(trame);
+                StatutsBox.AppendText("Pulse sent \n");
+               
+            }
+
+        }
+
+        private void choosenCom(object sender, EventArgs e)
+        {
+            port_ = new SerialPort(selectionCOM.SelectedIndex.ToString());
 
         }
 
         private void statuts_click(object sender, EventArgs e)
         {
-
+            string temp = "FE010000FF" + "1010";
+            float taille = temp.Length;
+            string trame = temp + taille.ToString();
+            if (port_ == null)
+            {
+                StatutsBox.AppendText("Statut request failed \n");
+                
+            }
+            else
+            {
+                StatutsBox.AppendText("Statut request sent \n");
+                port_.WriteLine(trame);
+                
+            }
         }
     }
 

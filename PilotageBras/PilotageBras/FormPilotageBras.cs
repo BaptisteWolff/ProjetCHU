@@ -97,7 +97,7 @@ namespace PilotageBras
                 nPos_ = nPos;
                 string coord = Pos_[nPos][0].ToString() + ',' + Pos_[nPos][1].ToString() + ';' + Pos_[nPos][2].ToString();
                 float taille = coord.Length;
-                string trame = "254" + "1001" + taille.ToString() + coord;
+                string trame = "FE" + "1001" + taille.ToString() + coord;
                 if (port_ == null)
                 {
                     return false;
