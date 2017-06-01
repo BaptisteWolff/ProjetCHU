@@ -167,8 +167,8 @@ namespace Signal
             // res[0] is the value
 
             //result_ = (float)res[0];
-            listBox1.Items.Add("Maxi : " + res[0]);
-            listBox1.Items.Add("Mini : " + res[1]);
+            listBox1.Items.Add("Maxi : " + res[0].ToString());
+            listBox1.Items.Add("Mini : " + res[1].ToString());
         }
 
         private void button_clearResults_Click(object sender, EventArgs e)

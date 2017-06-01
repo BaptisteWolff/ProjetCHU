@@ -13,14 +13,14 @@ scatter(:,4)=positionZ;
 [~,imi2]=find((values>maxi/2)&(values<maxi));
 [mini,~]=min(values);
 
-size = 20;
+size = 50;
 
 figure(1)
-scatter3(positionX(im),positionY(im),positionZ(im),size,'magenta');
+scatter3(positionX(im),positionY(im),positionZ(im),size,'MarkerFaceColor',[0.75 0 0.75]);
 hold on;
-scatter3(positionX(imi2),positionY(imi2),positionZ(imi2),size,'red');
+scatter3(positionX(imi2),positionY(imi2),positionZ(imi2),size,'MarkerFaceColor',[1 0 0]);
 hold on;
-scatter3(positionX(im2),positionY(im2),positionZ(im2),size,'yellow');
+scatter3(positionX(im2),positionY(im2),positionZ(im2),size,'MarkerFaceColor',[0.75 0.75]);
 
 s=strcat(path,'.png');
 saveas(gcf,s);
