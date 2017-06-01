@@ -42,7 +42,9 @@ namespace WCFClient
         // This delegate enables asynchronous calls for setting
         // the text property on a TextBox control.
         delegate void addListBoxCallback(string text);
+        delegate void setListBoxCallback(string text);
         RoutineThread routineThread_;
+        bool pulseDone;
 
         public FormClient()
         {
@@ -327,6 +329,7 @@ namespace WCFClient
         {
             listBox1.Items.Clear();
             listBox1.Items.Add("Starting...");
+            listBox1.Items.Add("0/0");
             // Initialise to the first position (entered by the user)
             nPos_ = -1;
             try
@@ -363,19 +366,21 @@ namespace WCFClient
             }
             else
             {
-                addListBoxThreadSafe((nPos_ + 1) + "/" + nbPos_);
+                setListBoxThreadSafe((nPos_ + 1) + "/" + nbPos_);
                 // Picoscope               
                 changeSavedFileName();
                 picoscopeThread_.setEnd(false);
                 Thread t = new Thread(new ThreadStart(picoscopeThread_.ThreadLoop));
                 t.Start();
 
+                pulseDone = false;
+
                 // Générateur
-                while (!picoscopeThread_.getEnd())
+                while (!picoscopeThread_.getEnd() || !pulseDone)
                 {
-                    // send pulse every 10 ms
+                    // send pulses, while picoscope as not yet captured data
                     generateur.pulse();
-                    Thread.Sleep(10);
+                    pulseDone = true;
                 }
 
                 // Signal
@@ -386,10 +391,14 @@ namespace WCFClient
             }
         }
 
+        public bool getPulseDone()
+        {
+            return pulseDone;
+        }
+
         private void button_stop_Click(object sender, EventArgs e)
         {
             routineThread_.setStop(true);
-            listBox1.Items.Add("Order received : stopping at the end of this loop");
             while(routineThread_.getStop())
             {
                 Thread.Sleep(100);
@@ -418,6 +427,29 @@ namespace WCFClient
             }
             else
             {
+                listBox1.Items.Add(text);
+            }
+        }
+
+        public void setListBoxThreadSafe(string text)
+        {
+            setListBox(text);
+        }
+
+
+        private void setListBox(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.listBox1.InvokeRequired)
+            {
+                setListBoxCallback d = new setListBoxCallback(setListBox);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                listBox1.Items.RemoveAt(listBox1.Items.Count - 1);
                 listBox1.Items.Add(text);
             }
         }

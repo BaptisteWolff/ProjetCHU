@@ -1961,7 +1961,8 @@ namespace PS3000ACSConsole
                     do
                     {
                         Console.WriteLine("5V Power Supply not connected\nDo you want to run using power from the USB lead? Y\\N");
-                        ch = char.ToUpper(Console.ReadKey(true).KeyChar);
+                        //ch = char.ToUpper(Console.ReadKey(true).KeyChar);
+                        ch = 'Y';
                         if (ch == 'Y')
                         {
                             Console.WriteLine("Powering the unit via USB");

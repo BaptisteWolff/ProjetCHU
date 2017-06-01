@@ -25,3 +25,6 @@ D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingé
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.pdb
 D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.Generateur.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Generateur\Generateur\bin\Debug\Generateur.exe.config
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\Generateur\Generateur\obj\Debug\Generateur.pdb

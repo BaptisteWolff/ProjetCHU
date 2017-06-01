@@ -148,7 +148,7 @@
             this.textBoxSetPeriod.Name = "textBoxSetPeriod";
             this.textBoxSetPeriod.Size = new System.Drawing.Size(100, 20);
             this.textBoxSetPeriod.TabIndex = 5;
-            this.textBoxSetPeriod.Text = "16";
+            this.textBoxSetPeriod.Text = "1000";
             this.textBoxSetPeriod.TextChanged += new System.EventHandler(this.textBoxSetPeriod_TextChanged);
             // 
             // buttonSetPico

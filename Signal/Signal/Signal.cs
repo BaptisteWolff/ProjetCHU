@@ -156,7 +156,7 @@ namespace Signal
             double[] posY = posY_.ToArray();
             double[] posZ = posZ_.ToArray();
 
-            listBox1.Items.Add(posX.ToString());
+            //listBox1.Items.Add(posX.ToString());
 
             // Call the funtion with the path
             String path = path1_ + "\\" + textBox_savedFile.Text;
@@ -167,8 +167,8 @@ namespace Signal
             // res[0] is the value
 
             //result_ = (float)res[0];
-            listBox1.Items.Add(res[0]);
-            listBox1.Items.Add(res[1]);
+            listBox1.Items.Add("Maxi : " + res[0]);
+            listBox1.Items.Add("Mini : " + res[1]);
         }
 
         private void button_clearResults_Click(object sender, EventArgs e)

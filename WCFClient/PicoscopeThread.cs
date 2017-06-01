@@ -29,8 +29,11 @@ namespace WCFClient
         public void ThreadLoop()
         {
             end_ = false;
-            client_.captureBlock();
-            end_ = true;
+            while (!end_ || !client_.getPulseDone())
+            {
+                client_.captureBlock();
+                end_ = true;
+            }            
         }
     }
 }
