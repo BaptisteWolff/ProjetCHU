@@ -22,5 +22,7 @@ namespace WCF
         void readFile(System.String fileName);
         [OperationContract]
         int getCurrentNPos();
+        [OperationContract]
+        bool getStatus();
     }
 }

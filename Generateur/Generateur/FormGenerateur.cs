@@ -57,6 +57,25 @@ namespace Generateur
 
         }
 
+        public bool pulse()
+        {
+            string temp = "FE0303010020FF" + "1100";
+            float taille = temp.Length;
+            string trame = temp + taille.ToString();
+            if (port_ == null)
+            {
+                return false;
+
+            }
+            else
+            {
+                port_.WriteLine(trame);
+                return true;
+
+            }
+
+        }
+
         private void choosenCom(object sender, EventArgs e)
         {
             port_ = new SerialPort(selectionCOM.SelectedIndex.ToString());
@@ -80,6 +99,18 @@ namespace Generateur
                 
             }
         }
+
+        public bool getStatus()
+        {
+            if (port_ == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
@@ -93,13 +124,12 @@ namespace Generateur
 
         public bool getStatus()
         {
-            //return ihm. ... ;
-            return true;
+            return ihm.getStatus();
         }
 
         public void pulse()
         {
-            //ihm.  ... ;
+            ihm.pulse() ;
         }
     }
 }

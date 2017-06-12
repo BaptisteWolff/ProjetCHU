@@ -302,7 +302,7 @@ namespace WCFClient
                 ready = false;
             }
             listBox1.Items.Add("Checking PilotageBras");
-            if (pilotageBras.getNbPos() > 0)
+            if (pilotageBras.getNbPos() > 0 && pilotageBras.getStatus())
             {
                 listBox1.Items.Add("Ready");
             }

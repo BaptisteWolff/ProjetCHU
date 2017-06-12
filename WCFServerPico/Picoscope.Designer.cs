@@ -51,6 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelChA = new System.Windows.Forms.Label();
             this.trackBarChA = new System.Windows.Forms.TrackBar();
+            this.label_totalTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarChD)).BeginInit();
@@ -82,6 +83,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label_totalTime);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxSampleCount);
@@ -305,6 +307,15 @@
             this.trackBarChA.Value = 3;
             this.trackBarChA.Scroll += new System.EventHandler(this.trackBarChA_Scroll);
             // 
+            // label_totalTime
+            // 
+            this.label_totalTime.AutoSize = true;
+            this.label_totalTime.Location = new System.Drawing.Point(16, 185);
+            this.label_totalTime.Name = "label_totalTime";
+            this.label_totalTime.Size = new System.Drawing.Size(78, 13);
+            this.label_totalTime.TabIndex = 13;
+            this.label_totalTime.Text = "label_totalTime";
+            // 
             // FormServeurPicoscope
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +364,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelChA;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label_totalTime;
     }
 }
 

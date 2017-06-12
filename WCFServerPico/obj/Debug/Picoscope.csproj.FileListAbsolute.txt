@@ -8,5 +8,3 @@ D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngén
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.FormServeurPicoscope.resources
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.Properties.Resources.resources
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\WCFServerPico\obj\Debug\Picoscope.csproj.GenerateResource.Cache
-C:\Users\Pac\git\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.exe
-C:\Users\Pac\git\ProjetCHU\WCFServerPico\obj\Debug\WCFServer.pdb

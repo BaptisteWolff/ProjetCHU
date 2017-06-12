@@ -205,6 +205,18 @@ namespace PilotageBras
 
         }
 
+        public bool getStatus()
+        {
+            if (port_ == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
         class ServiceImplementation : WCF.IServicePilotageBras
         {
@@ -247,6 +259,11 @@ namespace PilotageBras
             public int getCurrentNPos()
             {
                 return ihm.nPos_;
+            }
+
+            public bool getStatus()
+            {
+                return ihm.getStatus();
             }
         }
     }

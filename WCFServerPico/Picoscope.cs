@@ -88,6 +88,8 @@ namespace WCFServer
             labelChC.Text = _trackbarValues[trackBarChC.Value];
             labelChD.Text = _trackbarValues[trackBarChD.Value];
 
+            label_totalTime.Text = "Total capture time :";
+
             if (_pico.getPicoStatus() == true)
             {
                 setPico();
@@ -150,12 +152,16 @@ namespace WCFServer
                 period = toPeriod(timebase).ToString();
                 textBoxSetPeriod.Text = period;
 
+                /* calcul total time*/
+                int totalTime = sampleCount * (int)toPeriod(timebase);
+                label_totalTime.Text = "Total capture time : " + totalTime.ToString() + " ns";
+
                 /* Set filename */
                 string filename = textBoxFileName.Text;
 
                 _pico.setPico(timebase, sampleCount, filename, _range);
                 buttonSetPico.Enabled = false;
-                return true;
+                return true;                
             } else {
                 // Trying to find the picoscope
                 _pico = new PS3000ACSConsole.PS3000ACSConsole();

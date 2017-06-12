@@ -31,3 +31,9 @@ D:\Users\Baptiste\Documents\Telecom Saint-Etienne\FISE 2\Semestre 8\Projet ingé
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe.config
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.exe
 D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.exe
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\bin\Debug\PilotageBras.pdb
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csprojResolveAssemblyReference.cache
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.PilotageBras.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.Properties.Resources.resources
+D:\Users\Baptiste\Documents\Telecom_Saint-Etienne\FISE_2\Semestre_8\ProjetIngénierie\ProjetCHU\PilotageBras\PilotageBras\obj\Debug\PilotageBras.csproj.GenerateResource.Cache
