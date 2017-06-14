@@ -10,6 +10,7 @@ namespace WCFClient
     {
         bool stop_ = false;
         FormClient client_;
+
         public RoutineThread(FormClient client)
         {
             client_ = client;

@@ -43,7 +43,8 @@ namespace WCFServer
 
             public void collectBlock()
             {
-                ihm.collectBlock();
+                //ihm.collectBlockImmediate();
+                ihm.collectBlockTriggered();
             }
         }
 
@@ -96,6 +97,7 @@ namespace WCFServer
             } else
             {
                 buttonImediateBlock.Enabled = false;
+                buttonTriggeredBlock.Enabled = false;
                 listBox1.Items.Add("Unable to find the device");
             }
         }
@@ -108,7 +110,15 @@ namespace WCFServer
         private void buttonImmediateBlock_Click(object sender, EventArgs e)
         {
             listBox1.Items.Add("Immediate Block ...");
-            collectBlock();
+            collectBlockImmediate();
+            listBox1.Items.Add("Done.");
+        }
+
+
+        private void buttonTriggeredBlock_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add("Triggered Block ...");
+            collectBlockTriggered();
             listBox1.Items.Add("Done.");
         }
 
@@ -153,7 +163,7 @@ namespace WCFServer
                 textBoxSetPeriod.Text = period;
 
                 /* calcul total time*/
-                int totalTime = sampleCount * (int)toPeriod(timebase);
+                int totalTime = sampleCount/2 * (int)toPeriod(timebase);
                 label_totalTime.Text = "Total capture time : " + totalTime.ToString() + " ns";
 
                 /* Set filename */
@@ -172,6 +182,7 @@ namespace WCFServer
                 else
                 {
                     buttonImediateBlock.Enabled = false;
+                    buttonTriggeredBlock.Enabled = false;
                     listBox1.Items.Add("Unable to find the device");
                     return false;
                 }
@@ -184,9 +195,14 @@ namespace WCFServer
         }
 
         /* Capture data from PicoScope */
-        public void collectBlock()
+        public void collectBlockImmediate()
         {
             _pico.CollectBlockImmediate();
+        }
+
+        public void collectBlockTriggered()
+        {
+            _pico.CollectBlockTriggered();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -221,6 +237,7 @@ namespace WCFServer
             if(setPico())
             {
                 buttonImediateBlock.Enabled = true;
+                buttonTriggeredBlock.Enabled = true;
             }
         }
 
@@ -237,6 +254,7 @@ namespace WCFServer
             _range[0] = trackBarToRange(tValue);
             labelChA.Text = _trackbarValues[tValue];
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
@@ -246,6 +264,7 @@ namespace WCFServer
             _range[1] = trackBarToRange(tValue);
             labelChB.Text = _trackbarValues[tValue];
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
@@ -255,6 +274,7 @@ namespace WCFServer
             _range[2] = trackBarToRange(tValue);
             labelChC.Text = _trackbarValues[tValue];
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
@@ -264,24 +284,28 @@ namespace WCFServer
             _range[3] = trackBarToRange(tValue);
             labelChD.Text = _trackbarValues[tValue];
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
         private void textBoxSetPeriod_TextChanged(object sender, EventArgs e)
         {
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
         private void textBoxSampleCount_TextChanged(object sender, EventArgs e)
         {
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
         private void textBoxFileName_TextChanged(object sender, EventArgs e)
         {
             buttonImediateBlock.Enabled = false;
+            buttonTriggeredBlock.Enabled = false;
             buttonSetPico.Enabled = true;
         }
 
@@ -315,6 +339,7 @@ namespace WCFServer
             if (mod)
             {
                 buttonImediateBlock.Enabled = false;
+                buttonTriggeredBlock.Enabled = false;
                 buttonSetPico.Enabled = false;
                 textBoxFileName.Enabled = false;
                 textBoxSampleCount.Enabled = false;
@@ -327,6 +352,7 @@ namespace WCFServer
             else
             {
                 buttonImediateBlock.Enabled = true;
+                buttonTriggeredBlock.Enabled = true;
                 textBoxFileName.Enabled = true;
                 textBoxSampleCount.Enabled = true;
                 textBoxSetPeriod.Enabled = true;

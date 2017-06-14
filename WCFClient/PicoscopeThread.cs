@@ -29,10 +29,15 @@ namespace WCFClient
         public void ThreadLoop()
         {
             end_ = false;
-            while (!end_ || !client_.getPulseDone())
+            while (!end_)
             {
-                client_.captureBlock();
                 end_ = true;
+                client_.captureBlock();                
+                Thread.Sleep(100);
+                if (!client_.getPulseDone())
+                {
+                    end_ = false;
+                }
             }            
         }
     }

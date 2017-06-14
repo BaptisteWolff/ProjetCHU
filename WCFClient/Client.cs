@@ -367,6 +367,7 @@ namespace WCFClient
             else
             {
                 setListBoxThreadSafe((nPos_ + 1) + "/" + nbPos_);
+
                 // Picoscope               
                 changeSavedFileName();
                 picoscopeThread_.setEnd(false);
@@ -378,9 +379,14 @@ namespace WCFClient
                 // Générateur
                 while (!picoscopeThread_.getEnd() || !pulseDone)
                 {
-                    // send pulses, while picoscope as not yet captured data
+                    // send pulse, while picoscope as not yet captured data
                     generateur.pulse();
                     pulseDone = true;
+                    Thread.Sleep(100);
+                    if (!picoscopeThread_.getEnd())
+                    {
+                        pulseDone = false;
+                    }
                 }
 
                 // Signal

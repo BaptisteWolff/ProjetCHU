@@ -1034,7 +1034,7 @@ namespace PS3000ACSConsole
        *  this function demonstrates how to collect a single block of data from the
        *  unit, when a trigger event occurs.
        ****************************************************************************/
-        void CollectBlockTriggered()
+        public void CollectBlockTriggered()
         {
             short triggerVoltage = mv_to_adc(1000, (short)_channelSettings[(int)Imports.Channel.ChannelA].range); // ChannelInfo stores ADC counts
             Imports.TriggerChannelProperties[] sourceDetails = new Imports.TriggerChannelProperties[] {
@@ -1078,7 +1078,7 @@ namespace PS3000ACSConsole
              * Threshold = 1000mV */
             SetTrigger(sourceDetails, 1, conditions, 1, directions, null, 0, 0, 0);
 
-            BlockDataHandler("Ten readings after trigger", 0, Imports.Mode.ANALOGUE);
+            BlockDataHandler("", 0, Imports.Mode.ANALOGUE);
         }
 
         /****************************************************************************

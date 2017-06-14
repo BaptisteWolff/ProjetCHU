@@ -31,6 +31,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.buttonImediateBlock = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonTriggeredBlock = new System.Windows.Forms.Button();
+            this.label_totalTime = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSampleCount = new System.Windows.Forms.TextBox();
@@ -51,7 +53,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelChA = new System.Windows.Forms.Label();
             this.trackBarChA = new System.Windows.Forms.TrackBar();
-            this.label_totalTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarChD)).BeginInit();
@@ -76,13 +77,14 @@
             this.buttonImediateBlock.Name = "buttonImediateBlock";
             this.buttonImediateBlock.Size = new System.Drawing.Size(98, 23);
             this.buttonImediateBlock.TabIndex = 3;
-            this.buttonImediateBlock.Text = "Capture signal";
+            this.buttonImediateBlock.Text = "Immediate block";
             this.buttonImediateBlock.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonImediateBlock.UseVisualStyleBackColor = true;
             this.buttonImediateBlock.Click += new System.EventHandler(this.buttonImmediateBlock_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonTriggeredBlock);
             this.groupBox1.Controls.Add(this.label_totalTime);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
@@ -98,6 +100,25 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // buttonTriggeredBlock
+            // 
+            this.buttonTriggeredBlock.Location = new System.Drawing.Point(127, 55);
+            this.buttonTriggeredBlock.Name = "buttonTriggeredBlock";
+            this.buttonTriggeredBlock.Size = new System.Drawing.Size(98, 23);
+            this.buttonTriggeredBlock.TabIndex = 14;
+            this.buttonTriggeredBlock.Text = "Triggered block";
+            this.buttonTriggeredBlock.UseVisualStyleBackColor = true;
+            this.buttonTriggeredBlock.Click += new System.EventHandler(this.buttonTriggeredBlock_Click);
+            // 
+            // label_totalTime
+            // 
+            this.label_totalTime.AutoSize = true;
+            this.label_totalTime.Location = new System.Drawing.Point(16, 185);
+            this.label_totalTime.Name = "label_totalTime";
+            this.label_totalTime.Size = new System.Drawing.Size(78, 13);
+            this.label_totalTime.TabIndex = 13;
+            this.label_totalTime.Text = "label_totalTime";
             // 
             // label5
             // 
@@ -123,7 +144,7 @@
             this.textBoxSampleCount.Name = "textBoxSampleCount";
             this.textBoxSampleCount.Size = new System.Drawing.Size(100, 20);
             this.textBoxSampleCount.TabIndex = 8;
-            this.textBoxSampleCount.Text = "20000";
+            this.textBoxSampleCount.Text = "10000";
             this.textBoxSampleCount.TextChanged += new System.EventHandler(this.textBoxSampleCount_TextChanged);
             // 
             // label1
@@ -150,7 +171,7 @@
             this.textBoxSetPeriod.Name = "textBoxSetPeriod";
             this.textBoxSetPeriod.Size = new System.Drawing.Size(100, 20);
             this.textBoxSetPeriod.TabIndex = 5;
-            this.textBoxSetPeriod.Text = "1000";
+            this.textBoxSetPeriod.Text = "200";
             this.textBoxSetPeriod.TextChanged += new System.EventHandler(this.textBoxSetPeriod_TextChanged);
             // 
             // buttonSetPico
@@ -307,15 +328,6 @@
             this.trackBarChA.Value = 3;
             this.trackBarChA.Scroll += new System.EventHandler(this.trackBarChA_Scroll);
             // 
-            // label_totalTime
-            // 
-            this.label_totalTime.AutoSize = true;
-            this.label_totalTime.Location = new System.Drawing.Point(16, 185);
-            this.label_totalTime.Name = "label_totalTime";
-            this.label_totalTime.Size = new System.Drawing.Size(78, 13);
-            this.label_totalTime.TabIndex = 13;
-            this.label_totalTime.Text = "label_totalTime";
-            // 
             // FormServeurPicoscope
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +377,7 @@
         private System.Windows.Forms.Label labelChA;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_totalTime;
+        private System.Windows.Forms.Button buttonTriggeredBlock;
     }
 }
 
