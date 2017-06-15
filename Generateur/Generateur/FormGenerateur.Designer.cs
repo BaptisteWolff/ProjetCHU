@@ -34,6 +34,7 @@
             this.buttonPulse = new System.Windows.Forms.Button();
             this.buttonStatus = new System.Windows.Forms.Button();
             this.StatutsBox = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // selectionCOM
@@ -43,6 +44,7 @@
             this.selectionCOM.Name = "selectionCOM";
             this.selectionCOM.Size = new System.Drawing.Size(121, 21);
             this.selectionCOM.TabIndex = 0;
+            this.selectionCOM.SelectedIndexChanged += new System.EventHandler(this.selectionCOM_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -91,11 +93,22 @@
             this.StatutsBox.TabIndex = 5;
             this.StatutsBox.Text = "";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(32, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Select port";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Generateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 378);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.StatutsBox);
             this.Controls.Add(this.buttonStatus);
             this.Controls.Add(this.buttonPulse);
@@ -117,6 +130,7 @@
         private System.Windows.Forms.Button buttonPulse;
         private System.Windows.Forms.Button buttonStatus;
         private System.Windows.Forms.RichTextBox StatutsBox;
+        private System.Windows.Forms.Button button1;
     }
 }
 

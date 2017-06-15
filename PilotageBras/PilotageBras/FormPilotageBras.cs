@@ -177,16 +177,24 @@ namespace PilotageBras
 
         private void selectCOM(object sender, EventArgs e)
         {
-            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-            foreach (string port in ports)
+            var ports = SerialPort.GetPortNames();
+            chooseCOM.DataSource = ports;
+        }
+
+        private void Connect(string portName)
+        {
+            port_ = new SerialPort(portName);
+            if (!port_.IsOpen)
             {
-                chooseCOM.Items.Add(port);
+                port_.BaudRate = 9600;
+                port_.Open();
+                //Continue here....
             }
         }
 
         private void choosenCom(object sender, EventArgs e)
         {
-            port_ = new SerialPort(chooseCOM.SelectedIndex.ToString());
+            //port_ = new SerialPort(chooseCOM.SelectedIndex.ToString());
 
         }
 
@@ -214,6 +222,19 @@ namespace PilotageBras
             else
             {
                 return true;
+            }
+        }
+
+        private void buttonSelectCom_Click(object sender, EventArgs e)
+        {
+            if (chooseCOM.SelectedIndex > -1)
+            {
+                MessageBox.Show(String.Format("You selected port '{0}'", chooseCOM.SelectedItem));
+                Connect(chooseCOM.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Please select a port first");
             }
         }
 
@@ -266,6 +287,8 @@ namespace PilotageBras
                 return ihm.getStatus();
             }
         }
+
+       
     }
 }
   

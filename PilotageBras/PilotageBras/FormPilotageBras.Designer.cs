@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.portCOM = new System.Windows.Forms.Button();
             this.readFileButton = new System.Windows.Forms.Button();
+            this.buttonSelectCom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // itineraire
@@ -215,7 +216,7 @@
             // 
             // portCOM
             // 
-            this.portCOM.Location = new System.Drawing.Point(41, 61);
+            this.portCOM.Location = new System.Drawing.Point(12, 64);
             this.portCOM.Name = "portCOM";
             this.portCOM.Size = new System.Drawing.Size(52, 30);
             this.portCOM.TabIndex = 19;
@@ -233,11 +234,22 @@
             this.readFileButton.UseVisualStyleBackColor = true;
             this.readFileButton.Click += new System.EventHandler(this.readFileButton_click);
             // 
+            // buttonSelectCom
+            // 
+            this.buttonSelectCom.Location = new System.Drawing.Point(70, 68);
+            this.buttonSelectCom.Name = "buttonSelectCom";
+            this.buttonSelectCom.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectCom.TabIndex = 21;
+            this.buttonSelectCom.Text = "Select COM";
+            this.buttonSelectCom.UseVisualStyleBackColor = true;
+            this.buttonSelectCom.Click += new System.EventHandler(this.buttonSelectCom_Click);
+            // 
             // PilotageBras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 413);
+            this.Controls.Add(this.buttonSelectCom);
             this.Controls.Add(this.readFileButton);
             this.Controls.Add(this.portCOM);
             this.Controls.Add(this.label1);
@@ -287,6 +299,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button portCOM;
         private System.Windows.Forms.Button readFileButton;
+        private System.Windows.Forms.Button buttonSelectCom;
     }
 }
 
