@@ -291,6 +291,7 @@ namespace WCFClient
                 listBox1.Items.Add("! Not Ready");
                 ready = false;
             }
+            /*
             listBox1.Items.Add("Checking Generateur");
             if (generateur.getStatus())
             {
@@ -301,6 +302,7 @@ namespace WCFClient
                 listBox1.Items.Add("! Not Ready");
                 ready = false;
             }
+            */
             listBox1.Items.Add("Checking PilotageBras");
             if (pilotageBras.getNbPos() > 0 && pilotageBras.getStatus())
             {
@@ -380,7 +382,7 @@ namespace WCFClient
                 while (!picoscopeThread_.getEnd() || !pulseDone)
                 {
                     // send pulse, while picoscope as not yet captured data
-                    generateur.pulse();
+                    //generateur.pulse();
                     pulseDone = true;
                     Thread.Sleep(100);
                     if (!picoscopeThread_.getEnd())
