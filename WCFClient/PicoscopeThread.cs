@@ -9,36 +9,33 @@ namespace WCFClient
     class PicoscopeThread
     {
         WCFClient.FormClient client_;
-        bool end_ = false;
+        bool success_ = false;
 
         public PicoscopeThread(WCFClient.FormClient client)
         {
             client_ = client;
         }
 
-        public bool getEnd()
+        public bool success()
         {
-            return end_;
-        }
-
-        public void setEnd(bool end)
-        {
-            end_ = end;
+            return success_;
         }
 
         public void ThreadLoop()
         {
-            end_ = false;
-            while (!end_)
+            success_ = false;
+            /*while (!success_)
             {
-                end_ = true;
-                client_.captureBlock();                
-                Thread.Sleep(100);
                 if (!client_.getPulseDone())
                 {
-                    end_ = false;
+                    client_.captureBlock();
+                    success_ = client_.getPulseDone();
+                    Thread.Sleep(500);
                 }
-            }            
+            } 
+            */
+            client_.captureBlock();
+            success_ = true;
         }
     }
 }

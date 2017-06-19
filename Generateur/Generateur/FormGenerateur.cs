@@ -10,6 +10,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Generateur
 {
@@ -17,6 +18,8 @@ namespace Generateur
     {
         ServiceHost svh;
         SerialPort port_;
+        bool ready_ = false;
+        bool success_ = false;
 
         public Generateur()
         {
@@ -25,26 +28,25 @@ namespace Generateur
             svh.AddServiceEndpoint(typeof(WCF.IServiceGenerateur), new NetTcpBinding(), "net.tcp://localhost:8000");
             svh.Open();
         }
-
   
+        public bool ready()
+        {
+            return ready_;
+        }
+
+        public bool success()
+        {
+            return success_;
+        }
 
         private void ports_click(object sender, EventArgs e)
         {
-            /*string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-            selectionCOM.Items.Clear();
-            foreach (string port in ports)
-            {
-                selectionCOM.Items.Add(port);
-            }*/
             var ports = SerialPort.GetPortNames();
             selectionCOM.DataSource = ports;
         }
 
         private void pulse_click(object sender, EventArgs e)
         {
-            string temp = "FE0303010020FF";// + "1100";
-            float taille = temp.Length;
-            string trame = temp + taille.ToString();
             if (port_ == null)
             {
                 StatutsBox.AppendText("Pulse failed \n");
@@ -52,18 +54,18 @@ namespace Generateur
             }
             else
             {
-                port_.WriteLine(trame);
-                StatutsBox.AppendText("Pulse sent \n");
-               
+                preparation();
+                //while (!ready_){  };
+                pulse();
+                StatutsBox.AppendText("Pulse sent \n");               
             }
 
         }
 
-        public bool pulse()
+        public bool preparation()
         {
-            string temp = "FE0303010020FF";// +"1100";
-            float taille = temp.Length;
-            string trame = temp + taille.ToString();
+            ready_ = false;
+            success_ = false;
             if (port_ == null)
             {
                 return false;
@@ -71,7 +73,34 @@ namespace Generateur
             }
             else
             {
-                port_.WriteLine(trame);
+                byte[] trame = new byte[3];
+
+                trame[0] = 254;
+                trame[1] = 6;
+                trame[2] = 255;
+
+                port_.Write(trame, 0, 3);
+                return true;
+            }
+        }
+
+        public bool pulse()
+        {
+            if (port_ == null)
+            {
+                return false;
+
+            }
+            else
+            {
+                while (!ready_) { };
+                byte[] trame = new byte[3];
+
+                trame[0] = 254;
+                trame[1] = 5;
+                trame[2] = 255;
+
+                port_.Write(trame, 0, 3);
                 return true;
             }
 
@@ -84,9 +113,7 @@ namespace Generateur
 
         private void statuts_click(object sender, EventArgs e)
         {
-            string temp = "FE010000FF";//1010";
-            float taille = temp.Length;
-            string trame = temp + taille.ToString();
+            /*
             if (port_ == null)
             {
                 StatutsBox.AppendText("Statut request failed \n");
@@ -95,9 +122,8 @@ namespace Generateur
             else
             {
                 StatutsBox.AppendText("Statut request sent \n");
-                port_.WriteLine(trame);
                 
-            }
+            }*/
         }
 
         public bool getStatus()
@@ -119,6 +145,9 @@ namespace Generateur
         private void Connect(string portName)
         {
             port_ = new SerialPort(portName);
+            // Attach a method to be called when there
+            // is data waiting in the port's buffer
+            port_.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
             if (!port_.IsOpen)
             {
                 port_.BaudRate = 9600;
@@ -137,6 +166,24 @@ namespace Generateur
             else
             {
                 MessageBox.Show("Please select a port first");
+            }
+        }
+
+        private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            // Show all the incoming data in the port's buffer
+            int bytes = 1;
+            byte[] buffer = new byte[bytes];
+            port_.Read(buffer, 0, bytes);
+            //string sBuffer = ByteArrayToHexString(buffer);
+            Console.Write(buffer[0]);
+            if (buffer[0] == 67) // C
+            {
+                ready_ = true;
+            }
+            if(buffer[0] == 68) // D
+            {
+                success_ = true;
             }
         }
     }
@@ -158,6 +205,21 @@ namespace Generateur
         public void pulse()
         {
             ihm.pulse() ;
+        }
+
+        public bool ready()
+        {
+            return ihm.ready();
+        }
+
+        public bool success()
+        {
+            return ihm.success();
+        }
+
+        public void preparation()
+        {
+            ihm.preparation();
         }
     }
 }

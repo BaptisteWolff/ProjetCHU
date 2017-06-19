@@ -144,7 +144,7 @@
             this.textBoxSampleCount.Name = "textBoxSampleCount";
             this.textBoxSampleCount.Size = new System.Drawing.Size(100, 20);
             this.textBoxSampleCount.TabIndex = 8;
-            this.textBoxSampleCount.Text = "10000";
+            this.textBoxSampleCount.Text = "1700";
             this.textBoxSampleCount.TextChanged += new System.EventHandler(this.textBoxSampleCount_TextChanged);
             // 
             // label1
@@ -233,6 +233,7 @@
             this.trackBarChD.Size = new System.Drawing.Size(45, 214);
             this.trackBarChD.TabIndex = 9;
             this.trackBarChD.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarChD.Value = 7;
             this.trackBarChD.Scroll += new System.EventHandler(this.trackBarChD_Scroll);
             // 
             // label6
@@ -263,7 +264,7 @@
             this.trackBarChC.Size = new System.Drawing.Size(45, 214);
             this.trackBarChC.TabIndex = 6;
             this.trackBarChC.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarChC.Value = 3;
+            this.trackBarChC.Value = 2;
             this.trackBarChC.Scroll += new System.EventHandler(this.trackBarChC_Scroll);
             // 
             // label4
@@ -294,7 +295,7 @@
             this.trackBarChB.Size = new System.Drawing.Size(45, 214);
             this.trackBarChB.TabIndex = 3;
             this.trackBarChB.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarChB.Value = 3;
+            this.trackBarChB.Value = 2;
             this.trackBarChB.Scroll += new System.EventHandler(this.trackBarChB_Scroll);
             // 
             // label3
@@ -325,7 +326,7 @@
             this.trackBarChA.Size = new System.Drawing.Size(45, 214);
             this.trackBarChA.TabIndex = 0;
             this.trackBarChA.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarChA.Value = 3;
+            this.trackBarChA.Value = 2;
             this.trackBarChA.Scroll += new System.EventHandler(this.trackBarChA_Scroll);
             // 
             // FormServeurPicoscope

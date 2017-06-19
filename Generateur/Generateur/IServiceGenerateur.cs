@@ -12,5 +12,11 @@ namespace WCF
         bool getStatus();
         [OperationContract]
         void pulse();
+        [OperationContract]
+        bool ready();
+        [OperationContract]
+        bool success();
+        [OperationContract]
+        void preparation();
     }
 }

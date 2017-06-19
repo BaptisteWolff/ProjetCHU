@@ -20,6 +20,7 @@ namespace PilotageBras
         SerialPort port_;
         List<float[]> Pos_ = new List<float[]>();
         int nPos_ = -1;
+        bool ready_ = false;
 
         public PilotageBras()
         {
@@ -39,7 +40,6 @@ namespace PilotageBras
             {
                 while ((line = file.ReadLine()) != null)
                 {
-
                     itineraire.Items.Add(line);
 
                     var coord = line.Split('\t');
@@ -47,31 +47,20 @@ namespace PilotageBras
                     int i = 0;
                     for (i = 0; i < coord.Length - 1; i++)
                     {
-
-                        //float taille = coord[i].Length;
-                        //string trame = "254" + "1001" + taille.ToString() + coord[i];             
-
                         var posx = coord[i].Split(',');
                         var posy = posx[1].Split(';');
                         var posz = posy[1];
 
                         float[] pos = new float[3];
+
                         pos[0] = float.Parse(posx[0], CultureInfo.InvariantCulture);
                         pos[1] = float.Parse(posy[0], CultureInfo.InvariantCulture);
                         pos[2] = float.Parse(posz, CultureInfo.InvariantCulture);
+
                         Pos_.Add(pos);
-
-                        //port_.WriteLine(trame);
-
-
                     }
-
-
                 }
-            }
-
-            //setPos(0);
-            
+            }            
         }
 
         public float[] getPos()
@@ -88,27 +77,25 @@ namespace PilotageBras
         
         public bool setPos(int nPos)
         {
+            ready_ = false;
             if (nPos > Pos_.Count)
             {
                 nPos_ = -1;
                 return false;
             }
             else
-            {
+            {                
                 nPos_ = nPos;
-                //string coord = Pos_[nPos][0].ToString() + ',' + Pos_[nPos][1].ToString() + ';' + Pos_[nPos][2].ToString();
-                //float taille = coord.Length;
-                //string trame = "FE" + "02" /*+ taille.ToString() */ + coord + "FF";
-                byte[] trame = new byte[256];
+                byte[] trame = new byte[8];
                 /* status
                 trame[0] = (char)254;
                 trame[1] = (char)0;
                 trame[2] = (char)255;
                 */
                 
-                int x = (int)(Pos_[nPos][0] * 10);
-                int y = (int)(Pos_[nPos][1] * 10);
-                int z = (int)(Pos_[nPos][2] * 10);
+                int x = (int)(Pos_[nPos][0]);
+                int y = (int)(Pos_[nPos][1]);
+                int z = (int)(Pos_[nPos][2]);
 
                 trame[0] = 254;
                 trame[1] = 2;
@@ -118,10 +105,7 @@ namespace PilotageBras
                 trame[5] = (byte)';';
                 trame[6] = (byte)z;
                 trame[7] = 255;
-                
-                //string strame = new string(trame);
-                //Console.Write(strame);
-                //.WriteLine(trame);
+
                 if (port_ == null)
                 {
                     return false;
@@ -132,7 +116,7 @@ namespace PilotageBras
                     return true;
                 }
             }
-        }  
+        }
         
         public int getNbPos()
         {
@@ -183,37 +167,40 @@ namespace PilotageBras
 
         private void go_Click(object sender, EventArgs e)
         {
-            float x = float.Parse(positionX.Text);
+            int x = 0;
+            int y = 0;
+            int z = 0;
 
-            float y = float.Parse(positionY.Text);
+            bool validPos = false;
+            ready_ = false;
 
-            float z = float.Parse(positionZ.Text);
-
-
-            char[] trame = new char[256];
-            /* status
-            trame[0] = (char)254;
-            trame[1] = (char)0;
-            trame[2] = (char)255;
-            */
-            trame[0] = (char)254;
-            trame[1] = (char)x;
-
-            Console.Write(trame);
-
-            string strame = new string(trame);
-            Console.Write(strame);
-            //.WriteLine(trame);
-            if (port_ == null)
+            try
             {
-                
+                x = (int)(float.Parse(positionX.Text));
+                y = (int)(float.Parse(positionY.Text));
+                z = (int)(float.Parse(positionZ.Text));
+                validPos = true;
             }
-            else
+            catch
             {
-                port_.Write(strame);
+                itineraire.Items.Add("Invalid position");
             }
+            
+            if (port_ != null && validPos)
+            {
+                byte[] trame = new byte[8];
 
+                trame[0] = 254;
+                trame[1] = 2;
+                trame[2] = (byte)x;
+                trame[3] = (byte)',';
+                trame[4] = (byte)y;
+                trame[5] = (byte)';';
+                trame[6] = (byte)z;
+                trame[7] = 255;
 
+                port_.Write(trame, 0, 8);
+            }
         }
 
         private void selectCOM(object sender, EventArgs e)
@@ -272,6 +259,11 @@ namespace PilotageBras
             }
         }
 
+        public bool ready()
+        {
+            return ready_;
+        }
+
         private void buttonSelectCom_Click(object sender, EventArgs e)
         {
             if (chooseCOM.SelectedIndex > -1)
@@ -288,16 +280,15 @@ namespace PilotageBras
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             // Show all the incoming data in the port's buffer
-            //Console.WriteLine("Test");
-            Console.Write(port_.ReadExisting());
-            /*try
+            int bytes = 1;
+            byte[] buffer = new byte[bytes];
+            port_.Read(buffer, 0, bytes);
+            //string sBuffer = ByteArrayToHexString(buffer);
+            Console.Write(buffer[0]);
+            if (buffer[0] == 80) // P
             {
-                port_.ReadExisting();
+                ready_ = true;
             }
-            catch
-            {
-
-            }*/
         }
 
         [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
@@ -347,6 +338,11 @@ namespace PilotageBras
             public bool getStatus()
             {
                 return ihm.getStatus();
+            }
+
+            public bool ready()
+            {
+                return ihm.ready();
             }
         }
 

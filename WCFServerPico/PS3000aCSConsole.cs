@@ -428,14 +428,14 @@ namespace PS3000ACSConsole
                             }
                         }
 
-                        writer.Write("Temps,");
+                        writer.Write("Temps,");                     
 
-                        for (int i = 0; i < _channelCount; i++)
+                        for (int i = 0; i < _channelCount - 1; i++)
                         {
                             if (_channelSettings[i].enabled)
                             {
                                 writer.Write("Voie {0}", (char)('A' + i));
-                                if (nbChannelRead < nbChannelEnabled - 1)
+                                if (nbChannelRead < nbChannelEnabled - 2)
                                 {
                                     writer.Write(",");
                                     nbChannelRead++;
@@ -447,12 +447,12 @@ namespace PS3000ACSConsole
                         writer.WriteLine();
 
                         writer.Write("(ns),");
-                        for (int i = 0; i < _channelCount; i++)
+                        for (int i = 0; i < _channelCount - 1; i++)
                         {
                             if (_channelSettings[i].enabled)
                             {
                                 writer.Write("(mV)");
-                                if (nbChannelRead < nbChannelEnabled - 1)
+                                if (nbChannelRead < nbChannelEnabled - 2)
                                 {
                                     writer.Write(",");
                                     nbChannelRead++;
@@ -467,12 +467,12 @@ namespace PS3000ACSConsole
                         {
                             nbChannelRead = 0;
                             writer.Write("{0},", (i * timeInterval));
-                            for (int ch = 0; ch < _channelCount; ch++)
+                            for (int ch = 0; ch < _channelCount - 1; ch++)
                             {
                                 if (_channelSettings[ch].enabled)
                                 {
                                     writer.Write("{0}", adc_to_mv(maxPinned[ch].Target[i], (int)_channelSettings[(int)(Imports.Channel.ChannelA + ch)].range));
-                                    if (nbChannelRead < nbChannelEnabled - 1)
+                                    if (nbChannelRead < nbChannelEnabled - 2)
                                     {
                                         writer.Write(",");
                                         nbChannelRead++;
@@ -793,8 +793,10 @@ namespace PS3000ACSConsole
         *  this function demonstrates how to collect a single block of data
         *  from the unit (start collecting immediately)
         ****************************************************************************/
-        public void CollectBlockImmediate()
+        private void CollectBlock(int trigger)
         {
+            // trigger = 0 : no trigger
+            // trigger = 1 : trigger
             uint status;
             bool retry;
             uint sampleCount = Convert.ToUInt32(_sampleCount);
@@ -882,7 +884,7 @@ namespace PS3000ACSConsole
                     int nbChannelEnabled = 0;
                     int nbChannelRead = 0;
 
-                    for (int i = 0; i < _channelCount; i++)
+                    for (int i = 0; i < _channelCount - trigger; i++)
                     {
                         if (_channelSettings[i].enabled)
                         {
@@ -892,7 +894,7 @@ namespace PS3000ACSConsole
 
                     writer.Write("Temps,");
 
-                    for (int i = 0; i < _channelCount; i++)
+                    for (int i = 0; i < _channelCount - trigger; i++)
                     {
                         if (_channelSettings[i].enabled)
                         {
@@ -909,7 +911,7 @@ namespace PS3000ACSConsole
                     writer.WriteLine();
 
                     writer.Write("(ns),");
-                    for (int i = 0; i < _channelCount; i++)
+                    for (int i = 0; i < _channelCount - trigger; i++)
                     {
                         if (_channelSettings[i].enabled)
                         {
@@ -929,7 +931,7 @@ namespace PS3000ACSConsole
                     {
                         nbChannelRead = 0;
                         writer.Write("{0},", (i * timeInterval));
-                        for (int ch = 0; ch < _channelCount; ch++)
+                        for (int ch = 0; ch < _channelCount - trigger; ch++)
                         {
                             if (_channelSettings[ch].enabled)
                             {
@@ -981,6 +983,14 @@ namespace PS3000ACSConsole
                 if (p != null)
                     p.Dispose();
             }
+        }
+
+        public void CollectBlockImmediate()
+        {
+            /* Trigger is optional, disable it for now	*/
+            SetTrigger(null, 0, null, 0, null, null, 0, 0, 0);
+
+            CollectBlock(0);
         }
 
         /****************************************************************************
@@ -1036,29 +1046,29 @@ namespace PS3000ACSConsole
        ****************************************************************************/
         public void CollectBlockTriggered()
         {
-            short triggerVoltage = mv_to_adc(1000, (short)_channelSettings[(int)Imports.Channel.ChannelA].range); // ChannelInfo stores ADC counts
+            short triggerVoltage = mv_to_adc(4000, (short)_channelSettings[(int)Imports.Channel.ChannelD].range); // ChannelInfo stores ADC counts
             Imports.TriggerChannelProperties[] sourceDetails = new Imports.TriggerChannelProperties[] {
                 new Imports.TriggerChannelProperties(triggerVoltage,
                                                          256*10,
                                                          triggerVoltage,
                                                          256*10,
-                                                         Imports.Channel.ChannelA,
+                                                         Imports.Channel.ChannelD,
                                                          Imports.ThresholdMode.Level)};
 
             Imports.TriggerConditions[] conditions = new Imports.TriggerConditions[] {
-              new Imports.TriggerConditions(Imports.TriggerState.True,
+              new Imports.TriggerConditions(Imports.TriggerState.DontCare,
                                             Imports.TriggerState.DontCare,
                                             Imports.TriggerState.DontCare,
-                                            Imports.TriggerState.DontCare,
+                                            Imports.TriggerState.True,
                                             Imports.TriggerState.DontCare,
                                             Imports.TriggerState.DontCare,
                                             Imports.TriggerState.DontCare)};
 
             Imports.ThresholdDirection[] directions = new Imports.ThresholdDirection[]
-	                                        { Imports.ThresholdDirection.Rising,
+	                                        { Imports.ThresholdDirection.None,
                                             Imports.ThresholdDirection.None, 
                                             Imports.ThresholdDirection.None, 
-                                            Imports.ThresholdDirection.None, 
+                                            Imports.ThresholdDirection.Rising, 
                                             Imports.ThresholdDirection.None,
                                             Imports.ThresholdDirection.None };
 
@@ -1067,7 +1077,7 @@ namespace PS3000ACSConsole
 
             Console.Write("Collects when value rises past {0}", (_scaleVoltages) ?
                           adc_to_mv(sourceDetails[0].ThresholdMajor,
-                                    (int)_channelSettings[(int)Imports.Channel.ChannelA].range)
+                                    (int)_channelSettings[(int)Imports.Channel.ChannelD].range)
                                     : sourceDetails[0].ThresholdMajor);
             Console.WriteLine("{0}", (_scaleVoltages) ? ("mV") : (" ADC Counts"));
 
@@ -1078,7 +1088,8 @@ namespace PS3000ACSConsole
              * Threshold = 1000mV */
             SetTrigger(sourceDetails, 1, conditions, 1, directions, null, 0, 0, 0);
 
-            BlockDataHandler("", 0, Imports.Mode.ANALOGUE);
+            //BlockDataHandler("", 0, Imports.Mode.ANALOGUE);
+            CollectBlock(1);
         }
 
         /****************************************************************************

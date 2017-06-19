@@ -44,7 +44,6 @@ namespace WCFClient
         delegate void addListBoxCallback(string text);
         delegate void setListBoxCallback(string text);
         RoutineThread routineThread_;
-        bool pulseDone;
 
         public FormClient()
         {
@@ -136,6 +135,7 @@ namespace WCFClient
 
         private void changeSavedFileName()
         {
+            string sx, sy, sz;
             if (pilotageBras.getNbPos() > 0)
             {
                 x_ = pilotageBras.getXPos();
@@ -148,11 +148,40 @@ namespace WCFClient
                 y_ = 0;
                 z_ = 0;
             }
-            if (!System.IO.Directory.Exists(folderPath_ + "\\" + z_.ToString()))
+            sx = x_.ToString();
+            sy = y_.ToString();
+            sz = z_.ToString();
+
+            if (x_ < 100)
             {
-                System.IO.Directory.CreateDirectory(folderPath_ + "\\" + z_.ToString());
+                sx = "0" + sx;
+                if (x_ < 10)
+                {
+                    sx = "0" + sx;
+                }
             }
-            filePath_ = folderPath_ + "\\" + z_.ToString() + "\\" + x_.ToString() + "_" + y_.ToString() + ".csv";
+            if (y_ < 100)
+            {
+                sy = "0" + sy;
+                if (y_ < 10)
+                {
+                    sy = "0" + sy;
+                }
+            }
+            if (z_ < 100)
+            {
+                sz = "0" + sz;
+                if (z_ < 10)
+                {
+                    sz = "0" + sz;
+                }
+            }
+
+            if (!System.IO.Directory.Exists(folderPath_ + "\\" + sz))
+            {
+                System.IO.Directory.CreateDirectory(folderPath_ + "\\" + sz);
+            }
+            filePath_ = folderPath_ + "\\" + sz + "\\" + sx + "_" + sy + ".csv";
             pico.setFileName(filePath_);
         }
 
@@ -359,8 +388,13 @@ namespace WCFClient
         }
 
         public void routineLoop()
-        {            
-            // PilotageBras
+        {
+            while (!pilotageBras.ready())
+            {
+                //test2 = generateur.ready();
+                Thread.Sleep(100);
+            }
+            /* PilotageBras */
             if (!setPosThreadSafe(nPos_))
             {
                 routineThread_.setStop(true);
@@ -368,32 +402,39 @@ namespace WCFClient
             }
             else
             {
+                while (!pilotageBras.ready())
+                {
+                    //test2 = generateur.ready();
+                    Thread.Sleep(100);
+                }
+                /* Client */
                 setListBoxThreadSafe((nPos_ + 1) + "/" + nbPos_);
 
-                // Picoscope               
+                /* Picoscope */              
                 changeSavedFileName();
-                picoscopeThread_.setEnd(false);
                 Thread t = new Thread(new ThreadStart(picoscopeThread_.ThreadLoop));
-                t.Start();
+                t.Start();               
 
-                pulseDone = false;
-
-                // Générateur
-                while (!picoscopeThread_.getEnd() || !pulseDone)
+                /* Générateur */
+                //while (!picoscopeThread_.success())
+                //{
+                    // Preparation
+                    generateur.preparation();
+                    // Waiting for "generateur" and "pilotageBras" to be ready
+                    //bool test2 = generateur.ready();
+                    
+                    // Send pulse
+                    Thread.Sleep(500);
+                    generateur.pulse();
+                    Thread.Sleep(500);
+                while (!picoscopeThread_.success())
                 {
-                    // send pulse, while picoscope as not yet captured data
-                    //generateur.pulse();
-                    pulseDone = true;
-                    Thread.Sleep(100);
-                    if (!picoscopeThread_.getEnd())
-                    {
-                        pulseDone = false;
-                    }
                 }
+                //}
 
                 // Signal
-                signal.addPos(x_, y_, z_);
-                signal.valeurSignal(filePath_);
+                //signal.addPos(x_, y_, z_);
+                //signal.valeurSignal(filePath_);
 
                 nPos_++;
             }
@@ -401,7 +442,7 @@ namespace WCFClient
 
         public bool getPulseDone()
         {
-            return pulseDone;
+            return generateur.success();
         }
 
         private void button_stop_Click(object sender, EventArgs e)

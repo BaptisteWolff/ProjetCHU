@@ -24,5 +24,7 @@ namespace WCF
         int getCurrentNPos();
         [OperationContract]
         bool getStatus();
+        [OperationContract]
+        bool ready();
     }
 }
